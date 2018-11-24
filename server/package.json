@@ -1,0 +1,20 @@
+{
+  "name": "secretsantareacted",
+  "version": "1.0.0",
+  "description": "webapp for GF secret santa 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app.js"
+  },
+  "author": "eneida revueltas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.12",
+    "nodemailer": "^4.7.0",
+    "path": "^0.12.7"
+  }
+}
