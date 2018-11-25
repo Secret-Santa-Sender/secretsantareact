@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+//import { Route } from "react-router-dom";
 import API from "../utils/API";
 import html from "../utils/emailhtml.js";
 
@@ -9,18 +9,23 @@ class Home extends Component {
     this.state = {
       companyName: "",
       endDate: "",
-      emailAddress: "",
-      submitted: false,
+      page: "start",
       id: "",
-      link: ""
+      link: "",
+      emailAddress: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStart = this.handleStart.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleStart(event) {
+    this.setState({ page: "form" });
   }
 
   handleSubmit(event) {
@@ -49,16 +54,48 @@ class Home extends Component {
       });
   }
 
+  startPage() {
+    return (
+      <div>
+      <div className="fixed-header">
+      <h1>Secret Santa Sender!</h1>
+      </div>
+        <div className="steps">
+        <div className="step">
+        <img src="signup.svg" width="200px"></img>
+        <h2>Step 1</h2>
+        Sign up for Secret Santa!
+        Pick a date for the matches to be delievered by email.
+        </div>
+        <div className="step">
+        <img src="friends.svg" width="200px"></img>
+        <h2>Step 2</h2>
+        Share your signup link with your friends and family!
+        </div>
+        <div className="step">
+        <img src="present.svg" width="200px"></img>
+        <h2>Step 3</h2>
+        Everyone gets emailed their match on the mail date!
+        Give your gifts!
+        </div>
+        </div>
+        <div className="start-button-container">
+        <div className="start-button" onClick={this.handleStart}>Let's get started!</div>
+        </div>
+      </div>
+    );
+  }
+
   registrationForm() {
     return (
       <div>
-        <p>
-          Secret Santa! Welcome to Secret Santa, please enter your company name
-          below to receive a unique link.
-        </p>
+      <div className="fixed-header">
+      <h1>Secret Santa Sender!</h1>
+      </div>
+      <div className="header-clear">
         <form onSubmit={this.handleSubmit}>
           <label>
-            Company Name:
+            Family/Group/Company Name:
             <input
               type="text"
               name="companyName"
@@ -76,8 +113,9 @@ class Home extends Component {
               onChange={this.handleChange}
             />
           </label>
+          <br/>
           <label>
-            Email Address:
+            E-mail Address:
             <input
               type="text"
               name="emailAddress"
@@ -85,15 +123,17 @@ class Home extends Component {
               onChange={this.handleChange}
             />
           </label>
-
           <input type="submit" value="Submit" />
         </form>
+        </div>
       </div>
     );
   }
 
   render() {
-    if (this.state.submitted === false) {
+    if (this.state.page === "start") {
+      return this.startPage();
+    } else if (this.state.page === "form") {
       return this.registrationForm();
     } else {
       return (

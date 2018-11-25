@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+//import { Route } from "react-router-dom";
 import API from "../utils/API";
-import html from "../utils/emailhtml.js";
 
 class Matches extends Component {
   constructor(props) {
