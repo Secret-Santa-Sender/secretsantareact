@@ -34,6 +34,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  confirm: function(req, res) {
+    db.Participant.findOneAndUpdate(
+      { _id: req.params.id },
+      { confirmed: true },
+      {
+        new: true
+      }
+    )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   remove: function(req, res) {
     db.Participant.findOneAndRemove({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))

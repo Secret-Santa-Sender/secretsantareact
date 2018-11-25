@@ -9,17 +9,10 @@ class Home extends Component {
     this.state = {
       companyName: "",
       endDate: "",
+      emailAddress: "",
       submitted: false,
       id: "",
-      link: "",
-      emailAddress: "",
-      email: {
-        from: '"Playmates 🍼" <kinderplaymates@gmail.com>', // sender address
-        to: undefined, // list of receivers
-        subject: "Hello here's your Secret Santa Registration link", // Subject line
-        text: "Uhhh...Hello world?", // plain text body
-        html: "<b>Sup prof?</b>" // html body
-      }
+      link: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +30,7 @@ class Home extends Component {
       submitted: true
     });
 
-    //create the admin profile
+    //create the admin profile (also sends email)
 
     API.createAdmin({
       companyName: this.state.companyName,
@@ -45,25 +38,11 @@ class Home extends Component {
       emailAddress: this.state.emailAddress
     })
       .then(res => {
-        console.log("admin created - here is response:", res.data._id);
-        this.setState(
-          {
-            id: res.data._id,
-            link: "http://localhost:3000/registration/" + res.data._id,
-            email: {
-              to: this.state.emailAddress,
-              html: html.html(
-                "http://localhost:3000/registration/" + res.data._id
-              )
-            }
-          },
-          () => {
-            console.log("state before sending email:", this.state);
-            API.sendEmail(this.state.email).then(res => {
-              console.log(res);
-            });
-          }
-        );
+        console.log("admin created - here is response:", res.data);
+        this.setState({
+          id: res.data._id,
+          link: "http://localhost:3000/registration/" + res.data._id
+        });
       })
       .catch(err => {
         console.log("crete admin failed" + err);
@@ -119,7 +98,8 @@ class Home extends Component {
     } else {
       return (
         <p>
-          Thanks! Here is your unique link:
+          Thanks! Here is your unique link. Don't worry, this was also emailed
+          to you!:
           <a href={"http://localhost:3000/registration/" + this.state.id}>
             http://localhost:3000/registration/
             {this.state.id}
