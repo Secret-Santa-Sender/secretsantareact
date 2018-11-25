@@ -32,7 +32,7 @@ class Home extends Component {
     event.preventDefault();
 
     this.setState({
-      submitted: true
+      page: "submitted"
     });
 
     //create the admin profile (also sends email)
