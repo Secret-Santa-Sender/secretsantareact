@@ -53,8 +53,10 @@ module.exports = {
 
   //add confirmed: true later to the find parameters later
   makeMatches: function(req, res) {
-    db.Participant.find({ company: req.params.id }).then(participants => {
-      res.json({ pairs: helpers.getPairs(participants) });
-    });
+    db.Participant.find({ company: req.params.id, confirmed: true }).then(
+      participants => {
+        res.json({ pairs: helpers.getPairs(participants) });
+      }
+    );
   }
 };

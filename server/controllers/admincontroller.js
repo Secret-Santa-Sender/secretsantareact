@@ -62,16 +62,17 @@ module.exports = {
       .then(companies => {
         console.log(companies);
         for (var i = 0; i < companies.length; i++) {
-          db.Participant.find({ company: companies[i]._id }).then(
-            participants => {
-              // console.log("Participants for company.");
-              console.log(participants);
-              var pairs = helpers.getPairs(participants);
-              for (var j = 0; j < pairs.length; j++) {
-                helpers.sendPairEmail(pairs[j]);
-              }
+          db.Participant.find({
+            company: companies[i]._id,
+            confirmed: true
+          }).then(participants => {
+            // console.log("Participants for company.");
+            console.log(participants);
+            var pairs = helpers.getPairs(participants);
+            for (var j = 0; j < pairs.length; j++) {
+              helpers.sendPairEmail(pairs[j]);
             }
-          );
+          });
         }
       })
       .catch(err => res.status(422).json(err));
