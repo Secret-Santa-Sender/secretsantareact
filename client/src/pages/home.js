@@ -35,7 +35,7 @@ class Home extends Component {
       page: "submitted"
     });
 
-    //create the admin profile
+    //create the admin profile (also sends email)
 
     API.createAdmin({
       companyName: this.state.companyName,
@@ -43,25 +43,11 @@ class Home extends Component {
       emailAddress: this.state.emailAddress
     })
       .then(res => {
-        console.log("admin created - here is response:", res.data._id);
-        this.setState(
-          {
-            id: res.data._id,
-            link: "http://localhost:3000/registration/" + res.data._id,
-            email: {
-              to: this.state.emailAddress,
-              html: html.html(
-                "http://localhost:3000/registration/" + res.data._id
-              )
-            }
-          },
-          () => {
-            console.log("state before sending email:", this.state);
-            API.sendEmail(this.state.email).then(res => {
-              console.log(res);
-            });
-          }
-        );
+        console.log("admin created - here is response:", res.data);
+        this.setState({
+          id: res.data._id,
+          link: "http://localhost:3000/registration/" + res.data._id
+        });
       })
       .catch(err => {
         console.log("crete admin failed" + err);
@@ -152,7 +138,8 @@ class Home extends Component {
     } else {
       return (
         <p>
-          Thanks! Here is your unique link:
+          Thanks! Here is your unique link. Don't worry, this was also emailed
+          to you!:
           <a href={"http://localhost:3000/registration/" + this.state.id}>
             http://localhost:3000/registration/
             {this.state.id}

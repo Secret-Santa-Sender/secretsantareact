@@ -14,6 +14,10 @@ router
 	.put(participantController.update)
 	.delete(participantController.remove);
 
+// Matches with "/api/participant/confirm/:id"
+
+router.route("/confirm/:id").put(participantController.confirm);
+
 // Matches with "/api/participant/matches/:id"
 
 router.route("/matches/:id").get(participantController.makeMatches);

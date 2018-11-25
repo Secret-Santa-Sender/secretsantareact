@@ -6,7 +6,7 @@ const emailer = require("../../config/emailer.js");
 router
 	.route("/")
 	.get(adminController.findAll)
-	.post(adminController.create);
+	.post(adminController.createAdminSendEmail);
 
 // Matches with "/api/admin/:id"
 router
@@ -17,7 +17,9 @@ router
 
 // Matches with "/api/admin/sendemail"
 
-router.route("/sendemail").post(emailer.send);
+// router.route("/sendemail").post(emailer.send);
+
+// router.route("/sendemail").post(adminController.createAdminSendEmail);
 
 // Matches with "/api/admin/companiesduetoday"
 

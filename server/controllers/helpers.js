@@ -1,3 +1,7 @@
+const emailer = require("../config/emailer.js");
+const pairEmail = require("./pairemail.js");
+const adminEmail = require("./adminemail.js");
+
 function randomNumber(n) {
 	return Math.floor(Math.random() * n);
 }
@@ -60,11 +64,24 @@ module.exports = {
 		return pairs;
 	},
 	sendPairEmail: function(pair) {
-		console.log(
-			"Sending email from ",
-			pair.from.name,
-			" to ",
-			pair.to.name
-		);
+		emailer.sendMail({
+			to: pair.from.email,
+			subject: "Your Secret Santa!!",
+			html: pairEmail.html(
+				pair.from.name,
+				pair.to.name,
+				pair.to.likes,
+				pair.to.dislikes
+			)
+		});
+	},
+	sendAdminEmail: function(admin) {
+		emailer.sendMail({
+			to: admin.emailAddress,
+			subject: "Your Secret Santa Registration Link",
+			html: adminEmail.html(
+				"http://localhost:3000/registration/" + admin._id
+			)
+		});
 	}
 };

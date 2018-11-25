@@ -20,5 +20,14 @@ module.exports = {
 		});
 
 		res.send({ message: "OK" });
+	},
+
+	sendMail: function(body) {
+		transporter.sendMail(body, (error, info) => {
+			if (error) {
+				return console.log("this is an emailer error: ", error);
+			}
+			console.log("Message sent: %s", info.messageId);
+		});
 	}
 };
