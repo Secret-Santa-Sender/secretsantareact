@@ -12,7 +12,8 @@ class Registration extends Component {
       imgurl: "",
       email: "",
       company: this.props.match.params.id,
-      companyName: ""
+      companyName: "",
+      submitted: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,7 +60,7 @@ class Registration extends Component {
       });
   }
 
-  render() {
+  registrationForm() {
     return (
       <div>
         <p>
@@ -122,6 +123,14 @@ class Registration extends Component {
         </form>
       </div>
     );
+  }
+
+  render() {
+    if (this.state.companyName != "") {
+      return this.registrationForm();
+    } else {
+      return <div> 404 or whatever</div>;
+    }
   }
 }
 

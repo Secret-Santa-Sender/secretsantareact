@@ -9,6 +9,16 @@ module.exports = {
       .then(dbAdmin => res.json(dbAdmin))
       .catch(err => res.status(422).json(err));
   },
+  createAdminSendEmail: function(req, res) {
+    console.log(req.body);
+    db.Admin.create(req.body)
+      .then(dbAdmin => {
+        console.log("DB ADMIN HERE ->:", dbAdmin);
+        helpers.sendAdminEmail(dbAdmin);
+        res.json(dbAdmin);
+      })
+      .catch(err => res.status(422).json(err));
+  },
   findAll: function(req, res) {
     db.Admin.find()
       // .sort({ date: -1 })

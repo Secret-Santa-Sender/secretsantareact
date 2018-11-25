@@ -31,7 +31,8 @@ var ParticipantSchema = new Schema({
   },
   confirmed: {
     type: Boolean,
-    required: false
+    required: false,
+    default: false
   }
 });
 
