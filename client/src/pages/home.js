@@ -138,7 +138,7 @@ class Home extends Component {
     } else {
       return (
         <p>
-          Thanks! Here is your unique link. Don't worry, this was also emailed
+          Thanks. Here is your unique link. Don't worry, this was also emailed
           to you!:
           <a href={"http://localhost:3000/registration/" + this.state.id}>
             http://localhost:3000/registration/
