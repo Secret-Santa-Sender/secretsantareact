@@ -18,5 +18,8 @@ export default {
   },
   getCompaniesDueToday: function() {
     return axios.get("/api/admin/companiesdue/today");
+  },
+  confirmParticipant: function(id) {
+    return axios.put("/api/participant/confirm/" + id);
   }
 };

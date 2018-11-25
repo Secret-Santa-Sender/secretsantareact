@@ -126,7 +126,7 @@ class Registration extends Component {
   }
 
   render() {
-    if (this.state.companyName != "") {
+    if (this.state.companyName !== "") {
       return this.registrationForm();
     } else {
       return <div> 404 or whatever</div>;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Registration from "./pages/registration";
 import Matches from "./pages/matches";
+import Confirmation from "./pages/confirmation";
 
 import "./App.css";
 
@@ -14,6 +15,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/registration/:id" component={Registration} />
           <Route exact path="/matches/:id" component={Matches} />
+          <Route exact path="/confirmation/:id" component={Confirmation} />
         </div>
       </Router>
     );
