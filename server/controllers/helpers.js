@@ -1,6 +1,7 @@
 const emailer = require("../config/emailer.js");
 const pairEmail = require("./pairemail.js");
 const adminEmail = require("./adminemail.js");
+const confirmationEmail = require("./confirmationemail.js");
 
 function randomNumber(n) {
 	return Math.floor(Math.random() * n);
@@ -81,6 +82,16 @@ module.exports = {
 			subject: "Your Secret Santa Registration Link",
 			html: adminEmail.html(
 				"http://localhost:3000/registration/" + admin._id
+			)
+		});
+	},
+	sendConfirmationEmail: function(participant) {
+		emailer.sendMail({
+			to: participant.email,
+			subject: "Your Secret Santa Confirmation Link",
+			html: confirmationEmail.html(
+				participant.name,
+				"http://localhost:3000/confirmation/" + participant._id
 			)
 		});
 	}
