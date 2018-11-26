@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "start": "node app.js && npm run client",
-    "client": "cd client && yarn start"
+    "client": "cd client && yarn start",
+    "build": "cd client && react-scripts build"
   },
   "author": "eneida revueltas",
   "license": "ISC",
