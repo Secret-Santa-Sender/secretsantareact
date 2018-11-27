@@ -30,5 +30,5 @@ mongoose.connect(
 );
 
 app.listen(PORT, () => {
-	console.log("🌎 now listening for requests on port 4000");
+	console.log("🌎 now listening for requests on port " + PORT);
 });
