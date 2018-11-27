@@ -64,7 +64,7 @@ class Registration extends Component {
     return (
       <div>
         <p>
-          You are signing up for {this.state.companyName}'s Seret Santa! <br />
+          You are signing up for {this.state.companyName}'s Secret Santa! <br />
           Please enter your details below to sign up!
         </p>
 
