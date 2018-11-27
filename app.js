@@ -13,10 +13,6 @@ const db = require("./models");
 // Serve up static assets (usually on heroku) LATER FOR HEROKU
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-	console.log("Serving: " + __dirname + "/client/build/index.html");
-	app.get("*", function(req, res) {
-		res.sendFile(__dirname + "/client/build/index.html");
-	});
 }
 
 // Configure body parser for AJAX requests
@@ -25,6 +21,10 @@ app.use(bodyParser.json());
 
 // Add api routes WHEN BUILT
 app.use(routes);
+console.log("Serving: " + __dirname + "/client/build/index.html");
+app.get("*", function(req, res) {
+	res.sendFile(__dirname + "/client/build/index.html");
+});
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
