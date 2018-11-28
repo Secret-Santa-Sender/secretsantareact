@@ -61,6 +61,7 @@ module.exports = {
     console.log("send is running");
     db.Admin.find({ endDate: moment().format("YYYY-MM-DD") })
       .then(companies => {
+        console.log(moment().format("YYYY-MM-DD"));
         console.log(companies);
         for (var i = 0; i < companies.length; i++) {
           db.Participant.find({
