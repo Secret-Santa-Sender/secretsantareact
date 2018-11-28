@@ -58,6 +58,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   sendAllEmails: function(req, res) {
+    console.log("send is running");
     db.Admin.find({ endDate: moment().format("YYYY-MM-DD") })
       .then(companies => {
         console.log(companies);
@@ -75,6 +76,9 @@ module.exports = {
           });
         }
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log("error");
+        res.status(422).json(err);
+      });
   }
 };
