@@ -15,12 +15,6 @@ router
 	.put(adminController.update)
 	.delete(adminController.remove);
 
-// Matches with "/api/admin/sendemail"
-
-// router.route("/sendemail").post(emailer.send);
-
-// router.route("/sendemail").post(adminController.createAdminSendEmail);
-
 // Matches with "/api/admin/companiesduetoday"
 
 router.route("/companiesdue/today").get(adminController.findCompaniesDueToday);

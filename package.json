@@ -1,0 +1,31 @@
+{
+  "name": "secretsantareacted",
+  "version": "1.0.0",
+  "description": "webapp for GF secret santa 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "concurrently \"node app.js\" \"npm run client\"",
+    "client": "cd client && yarn start",
+    "build": "cd client && react-scripts build",
+    "postinstall": "npm run build"
+  },
+  "author": "eneida revueltas",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.12",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^4.7.0",
+    "path": "^0.12.7",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.1",
+    "yarn": "^1.12.3"
+  }
+}

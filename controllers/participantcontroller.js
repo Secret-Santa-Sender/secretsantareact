@@ -8,6 +8,15 @@ module.exports = {
       .then(dbParticipant => res.json(dbParticipant))
       .catch(err => res.status(422).json(err));
   },
+  createAndSendConfirmationEmail: function(req, res) {
+    console.log(req.body);
+    db.Participant.create(req.body)
+      .then(dbParticipant => {
+        helpers.sendConfirmationEmail(dbParticipant);
+        res.json(dbParticipant);
+      })
+      .catch(err => res.status(422).json(err));
+  },
   findAll: function(req, res) {
     db.Participant.find()
       // .sort({ date: -1 })

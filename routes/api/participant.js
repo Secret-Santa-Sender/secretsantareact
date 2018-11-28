@@ -5,7 +5,7 @@ const participantController = require("../../controllers/participantcontroller.j
 router
 	.route("/")
 	.get(participantController.findAll)
-	.post(participantController.create);
+	.post(participantController.createAndSendConfirmationEmail);
 
 // Matches with "/api/participant/:id"
 router
