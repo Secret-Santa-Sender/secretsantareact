@@ -143,22 +143,36 @@ class Home extends Component {
     );
   }
 
+  linkPage() {
+      return (
+      <div>
+        <div className="fixed-header">
+          <h1>Secret Santa Sender!</h1>
+        </div>
+        <div className="header-clear">
+        <div className="registrationLink">
+        <p>
+          Thanks! Here is the signup link you can share with your group: 
+          <div className="displayLink">
+          <a href={"http://www.secretsantasender.com/registration/" + this.state.id}>
+            http://www.secretsantasender.com/registration/{this.state.id}
+          </a>
+          </div>
+          Don't worry, this was also emailed to you!
+        </p>
+        </div>
+        </div>
+      </div>
+      );
+  }
+
   render() {
     if (this.state.page === "start") {
       return this.startPage();
     } else if (this.state.page === "form") {
       return this.registrationForm();
     } else {
-      return (
-        <p>
-          Thanks! Here is your unique link. Don't worry, this was also emailed
-          to you!:
-          <a href={"http://localhost:3000/registration/" + this.state.id}>
-            http://localhost:3000/registration/
-            {this.state.id}
-          </a>
-        </p>
-      );
+      return this.linkPage();
     }
   }
 }
