@@ -17,7 +17,7 @@ div.fixed-footer{
 }
 
 div.header-clear {
-  padding-top: 200px;
+  padding-top: 150px;
 }
 
 div.steps {
@@ -38,11 +38,49 @@ div.start-button-container {
 
 div.start-button {
   background: #ccc;
-  font-size: 18pt;
+  font-size: 14pt;
   padding: 10px 20px;
   display: inline-block;
 }
 
 div.start-button:hover {
   text-decoration: underline;
+}
+
+form.registration input[type=text] {
+  font-size: 14pt;
+  margin: 5px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+}
+
+form.registration label {
+  vertical-align: top;
+  font-size: 14pt;
+  padding: 10px;
+  width: 200px;
+  display: inline-block;
+  text-align: right;
+}
+
+div.form-container {
+  text-align: center;
+}
+
+form.registration input[type=submit] {
+  background: #ccc;
+  font-size: 14pt;
+  margin: 20px;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+form.registration input[type=submit]:hover {
+  text-decoration: underline;
+}
+
+form.registration div.input-block {
+  display: inline-block;
+  text-align: left;
+  width: 550px;
 }

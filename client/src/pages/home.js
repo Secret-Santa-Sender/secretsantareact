@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //import { Route } from "react-router-dom";
 import API from "../utils/API";
-import html from "../utils/emailhtml.js";
 
 class Home extends Component {
   constructor(props) {
@@ -94,38 +93,51 @@ class Home extends Component {
           <h1>Secret Santa Sender!</h1>
         </div>
         <div className="header-clear">
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Family/Group/Company Name:
+          <div className="form-container">
+          <form className="registration" onSubmit={this.handleSubmit}>
+            <label>Group Name:</label>
+            <div className="input-block">
               <input
                 type="text"
                 name="companyName"
                 value={this.state.companyName}
+                placeholder="E.g. Johnston Family"
                 onChange={this.handleChange}
               />
-            </label>
+              <br />
+              The group name will be used on email to identify your secret santa list. <br /> For example, "Welcome to the Johston Family secret santa list!".
+            </div>
             <br />
-            <label>
-              EndDate (YYYY-MM-DD):
-              <input
+            <label>Mail Date:</label>
+            <div className="input-block">
+            <input
                 type="text"
                 name="endDate"
                 value={this.state.enddate}
+                placeholder="E.g. 2018-12-20"
                 onChange={this.handleChange}
               />
-            </label>
+             <br />
+             This is the date that all the matches will emailed out to your group. <br />
+             Everyone who's participating needs to be signed up before this date.
+            </div>
             <br />
-            <label>
-              E-mail Address:
+            <label>E-mail Address:</label>
+            <div className="input-block">
               <input
                 type="text"
                 name="emailAddress"
                 value={this.state.emailAddress}
+                placeholder="yourname@mail.com"
                 onChange={this.handleChange}
               />
-            </label>
+              <br />
+              This is your email. We'll send you a link to share with all the participants.
+            </div>
+            <br />
             <input type="submit" value="Submit" />
           </form>
+          </div>
         </div>
       </div>
     );
