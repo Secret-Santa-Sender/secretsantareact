@@ -81,7 +81,7 @@ module.exports = {
 			to: admin.emailAddress,
 			subject: "Your Secret Santa Registration Link",
 			html: adminEmail.html(
-				"http://localhost:3000/registration/" + admin._id
+				"http://www.secretsantasender.com/registration/" + admin._id
 			)
 		});
 	},
@@ -91,7 +91,7 @@ module.exports = {
 			subject: "Your Secret Santa Confirmation Link",
 			html: confirmationEmail.html(
 				participant.name,
-				"http://localhost:3000/confirmation/" + participant._id
+				"www.secretsantasender.com/confirmation/" + participant._id
 			)
 		});
 	}
