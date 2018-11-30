@@ -26,7 +26,6 @@ class Registration extends Component {
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.companyName);
     event.preventDefault();
 
     API.createParticipant({
@@ -43,6 +42,8 @@ class Registration extends Component {
       .catch(() => {
         console.log("crete participant failed");
       });
+
+    this.setState({ submitted: true });
   }
 
   componentDidMount() {
@@ -127,7 +128,13 @@ class Registration extends Component {
 
   render() {
     if (this.state.companyName !== "") {
-      return this.registrationForm();
+      if (this.state.submitted === false) {
+        return this.registrationForm();
+      } else {
+        return (
+          <div> Thanks! Check your email to confirm your participation! </div>
+        );
+      }
     } else {
       return <div> 404 or whatever</div>;
     }

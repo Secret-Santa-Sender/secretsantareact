@@ -47,7 +47,7 @@ class Confirmation extends Component {
         </div>
       );
     } else {
-      return <div>404</div>;
+      return <div>nothing to see here</div>;
     }
   }
 }
