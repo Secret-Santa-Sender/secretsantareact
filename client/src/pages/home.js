@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-//import { Route } from "react-router-dom";
 import API from "../utils/API";
+import DatePicker from "react-date-picker";
+import moment from "moment";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       companyName: "",
-      endDate: "",
+      endDate: new Date(),
       page: "start",
       id: "",
       link: "",
@@ -27,6 +28,8 @@ class Home extends Component {
     this.setState({ page: "form" });
   }
 
+  handleDateChange = enddate => this.setState({enddate})
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -38,7 +41,7 @@ class Home extends Component {
 
     API.createAdmin({
       companyName: this.state.companyName,
-      endDate: this.state.endDate,
+      endDate: moment(this.state.endDate).format("YYYY-MM-DD"),
       emailAddress: this.state.emailAddress
     })
       .then(res => {
@@ -110,12 +113,9 @@ class Home extends Component {
             <br />
             <label>Mail Date:</label>
             <div className="input-block">
-            <input
-                type="text"
-                name="endDate"
+            <DatePicker 
                 value={this.state.enddate}
-                placeholder="E.g. 2018-12-20"
-                onChange={this.handleChange}
+                onChange={this.handleDateChange}
               />
              <br />
              This is the date that all the matches will emailed out to your group. <br />
@@ -151,7 +151,6 @@ class Home extends Component {
         </div>
         <div className="header-clear">
         <div className="registrationLink">
-        <p>
           Thanks! Here is the signup link you can share with your group: 
           <div className="displayLink">
           <a href={"http://www.secretsantasender.com/registration/" + this.state.id}>
@@ -159,7 +158,6 @@ class Home extends Component {
           </a>
           </div>
           Don't worry, this was also emailed to you!
-        </p>
         </div>
         </div>
       </div>

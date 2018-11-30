@@ -133,14 +133,27 @@ class Registration extends Component {
     );
   }
 
+  postRegistration() {
+    return (
+      <div>
+        <div className="fixed-header">
+          <h1>Secret Santa Sender!</h1>
+        </div>
+        <div className="header-clear">
+        <div className="registration-message">
+          Thanks! We've sent you an email to {this.state.email}. Please use it to confirm your email address.
+        </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     if (this.state.companyName !== "") {
       if (this.state.submitted === false) {
         return this.registrationForm();
       } else {
-        return (
-          <div> Thanks! Check your email to confirm your participation! </div>
-        );
+        return this.postRegistration();
       }
     } else {
       return <div> 404 or whatever</div>;
