@@ -52,15 +52,21 @@ form.registration input[type=text] {
   margin: 5px;
   border: none;
   border-bottom: 2px solid #ddd;
+  width: 300px;
+  vertical-align: bottom;
 }
 
 form.registration label {
   vertical-align: top;
   font-size: 14pt;
   padding: 10px;
-  width: 200px;
+  width: 150px;
   display: inline-block;
   text-align: right;
+}
+
+div.form-line {
+  margin: 20px;
 }
 
 div.form-container {
@@ -83,4 +89,20 @@ form.registration div.input-block {
   display: inline-block;
   text-align: left;
   width: 550px;
+}
+
+div.registrationLink {
+  text-align: center;
+  font-size: 14pt;
+}
+
+div.displayLink {
+  padding: 10px;
+}
+
+div.registration-message {
+  text-align:center;
+  font-size: 14pt;
+  width: 400px;
+  margin: auto;
 }
