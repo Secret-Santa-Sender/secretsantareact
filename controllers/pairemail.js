@@ -108,21 +108,23 @@ a:focus{text-decoration:underline !important}
 <table align='center' class='layout' width='600' style='background-color:#ffffff;border-radius:2px;border-spacing:0;color:#222222;margin-right:auto;margin-left:auto;-webkit-font-smoothing:antialiased;font-family:'Open Sans', sans-serif;font-size:11px;font-weight:300;line-height:26px;width:600px'>
 <tr>
 <td class='padded' style='padding: 18px 20px; background-color: #ffffff'>
-<h1 style='color:#222222;font-family:'Open Sans', sans-serif;font-size:18px;font-weight:bold;line-height:26px;margin:14px 0 14px 0;'>Hi ` +
+<h2 style='color:#222222;font-family:'Open Sans', sans-serif;font-size:18px;font-weight:bold;line-height:26px;margin:14px 0 14px 0;'>Hi ` +
       name1 +
-      `, your Secret Santa is....</h1>
+      `, your Secret Santa is....</h2>
 
 <center class='button' lang='x-button' xml:lang='x-button'>
-<p
-      style='color:#3EA23D;background-color:#3EA23D;border-color:#3EA23D;border-radius:2px;border-style:solid;color:#FFFFFF;font-size:16px;font-weight:bold;text-align:center;text-decoration:none;box-shadow:0px 1px 3px rgba(0,0,0,0.2);border-width:9px 20px;display:inline-block;margin-bottom:14px'>` +
+      <h1><b> ` +
       name2 +
-      `</p>
-     <br> <p>they like ` +
+      `!!</b></h1>
+     <br> <p>They like ` +
       likes +
       ` </p>
-     <br> <p>they do NOT like ` +
+     <br> <p>They do NOT like ` +
       dislikes +
       ` </p>
+      <br>
+      <p> Happy Holidays!</p>
+      <p>-Willow</p>
 </center>
 </td>
 </tr>

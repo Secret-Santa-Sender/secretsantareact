@@ -67,6 +67,7 @@ module.exports = {
 	sendPairEmail: function(pair) {
 		emailer.sendMail({
 			to: pair.from.email,
+			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
 			subject: "Your Secret Santa!!",
 			html: pairEmail.html(
 				pair.from.name,
@@ -79,6 +80,7 @@ module.exports = {
 	sendAdminEmail: function(admin) {
 		emailer.sendMail({
 			to: admin.emailAddress,
+			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
 			subject: "Your Secret Santa Registration Link",
 			html: adminEmail.html(
 				"http://www.secretsantasender.com/registration/" + admin._id
@@ -88,6 +90,7 @@ module.exports = {
 	sendConfirmationEmail: function(participant) {
 		emailer.sendMail({
 			to: participant.email,
+			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
 			subject: "Your Secret Santa Confirmation Link",
 			html: confirmationEmail.html(
 				participant.name,
