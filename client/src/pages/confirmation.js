@@ -56,7 +56,9 @@ class Confirmation extends Component {
               <p>
                 <b>Your dislikes:</b> {this.state.dislikes}
               </p>
-              <p>Your photo:</p>
+              <p>
+                <b>Your photo:</b>
+              </p>
               <br />
               <img src={this.state.imgUrl} height="100px" />
             </div>
