@@ -58,10 +58,12 @@ class Home extends Component {
 
   startPage() {
     return (
-      <div>
-        <div className="fixed-header">
+      <div className="contents">
+        <div className="logo"><img src="willow.svg"/></div>
+        <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
+        <div className="box">
         <div className="steps">
           <div className="step">
             <img src="signup.svg" width="200px" />
@@ -85,19 +87,22 @@ class Home extends Component {
             Let's get started!
           </div>
         </div>
+        </div>
       </div>
     );
   }
 
   registrationForm() {
     return (
-      <div>
-        <div className="fixed-header">
+      <div className="contents">
+        <div className="logo"><img src="willow.svg"/></div>
+        <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
-        <div className="header-clear">
+        <div className="box">
           <div className="form-container">
           <form className="registration" onSubmit={this.handleSubmit}>
+            <div className="form-line">
             <label>Group Name:</label>
             <div className="input-block">
               <input
@@ -110,7 +115,8 @@ class Home extends Component {
               <br />
               The group name will be used on email to identify your secret santa list. <br /> For example, "Welcome to the Johston Family secret santa list!".
             </div>
-            <br />
+            </div>
+            <div className="form-line">
             <label>Mail Date:</label>
             <div className="input-block">
             <DatePicker 
@@ -121,7 +127,8 @@ class Home extends Component {
              This is the date that all the matches will emailed out to your group. <br />
              Everyone who's participating needs to be signed up before this date.
             </div>
-            <br />
+            </div>
+            <div className="form-line">
             <label>E-mail Address:</label>
             <div className="input-block">
               <input
@@ -134,7 +141,7 @@ class Home extends Component {
               <br />
               This is your email. We'll send you a link to share with all the participants.
             </div>
-            <br />
+            </div>
             <input type="submit" value="Submit" />
           </form>
           </div>
@@ -145,16 +152,17 @@ class Home extends Component {
 
   linkPage() {
       return (
-      <div>
-        <div className="fixed-header">
+      <div className="contents">
+        <div className="logo"><img src="willow.svg"/></div>
+        <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
-        <div className="header-clear">
+        <div className="box">
         <div className="registrationLink">
           Thanks! Here is the signup link you can share with your group: 
           <div className="displayLink">
-          <a href={"http://www.secretsantasender.com/registration/" + this.state.id}>
-            http://www.secretsantasender.com/registration/{this.state.id}
+          <a href={this.registrationLink()}>
+            {this.registrationLink()}
           </a>
           </div>
           Don't worry, this was also emailed to you!
@@ -162,6 +170,13 @@ class Home extends Component {
         </div>
       </div>
       );
+  }
+
+  registrationLink() {
+    if (process.env.NODE_ENV === 'production') {
+      return "http://www.secretsantasender.com/registration/" + this.state.id;
+    }
+    return "http://localhost:3000/registration/" + this.state.id;
   }
 
   render() {

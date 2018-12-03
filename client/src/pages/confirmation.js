@@ -40,11 +40,12 @@ class Confirmation extends Component {
   render() {
     if (this.state.name !== "") {
       return (
-        <div>
-          <div className="fixed-header">
-            <h1>Secret Santa Sender!</h1>
-          </div>
-          <div className="header-clear">
+      <div className="contents">
+        <div className="logo"><img src="/willow.svg"/></div>
+        <div className="title">
+          <h1>Secret Santa Sender!</h1>
+        </div>
+        <div className="box">
             <div className="registration-message">
               <p>Thanks! You are confirmed for Secret Santa.</p>
               <p>

@@ -68,11 +68,12 @@ class Registration extends Component {
 
   registrationForm() {
     return (
-      <div>
-        <div className="fixed-header">
+      <div className="contents">
+        <div className="logo"><img src="/willow.svg"/></div>
+        <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
-        <div className="header-clear">
+        <div className="box">
           <div className="registration-message">
             You're signing up for {this.state.companyName}'s secret santa list!
             <br />
@@ -137,11 +138,12 @@ class Registration extends Component {
 
   postRegistration() {
     return (
-      <div>
-        <div className="fixed-header">
+      <div className="contents">
+        <div className="logo"><img src="/willow.svg"/></div>
+        <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
-        <div className="header-clear">
+        <div className="box">
           <div className="registration-message">
             Thanks! We've sent you an email to {this.state.email}. Please use it
             to confirm your email address.
