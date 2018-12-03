@@ -28,7 +28,8 @@ class Confirmation extends Component {
         this.setState({
           name: res.data.name,
           likes: res.data.likes,
-          dislikes: res.data.dislikes
+          dislikes: res.data.dislikes,
+          imgUrl: res.data.imgUrl
         });
       })
       .catch(() => {
@@ -40,10 +41,26 @@ class Confirmation extends Component {
     if (this.state.name !== "") {
       return (
         <div>
-          <p>Thanks! You are confirmed for Secret Santa</p>
-          <p>Name: {this.state.name}</p>
-          <p>Your likes: {this.state.likes}</p>
-          <p>Your dislikes: {this.state.dislikes}</p>
+          <div className="fixed-header">
+            <h1>Secret Santa Sender!</h1>
+          </div>
+          <div className="header-clear">
+            <div className="registration-message">
+              <p>Thanks! You are confirmed for Secret Santa.</p>
+              <p>
+                <b>Name:</b> {this.state.name}
+              </p>
+              <p>
+                <b>Your likes:</b> {this.state.likes}
+              </p>
+              <p>
+                <b>Your dislikes:</b> {this.state.dislikes}
+              </p>
+              <p>Your photo:</p>
+              <br />
+              <img src={this.state.imgUrl} height="100px" />
+            </div>
+          </div>
         </div>
       );
     } else {

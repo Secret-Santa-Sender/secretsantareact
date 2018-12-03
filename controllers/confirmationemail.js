@@ -103,7 +103,9 @@ a:focus{text-decoration:underline !important}
 <div class='wrapper' style='min-width:260px;padding:10px;min-height:100%;box-sizing:border-box;height:100%;font-family:'Open Sans', sans-serif;font-size:11px;font-weight:300;line-height:26px'>
 <div style='Margin-bottom: 34px; text-align: right;'>
 </div>
-<div class='logo' style='text-align: center; margin-bottom: 30px; margin-top: 30px;'><img class='logo-image' alt='GetFeedback' style='-ms-interpolation-mode:bicubic;border:0;vertical-align: bottom;' src='https://getfeedback.imgix.net/uploads/images/5795283/c037210c82eefb755489e0e875c8c9bc39cc59a5.png?ixlib=rb-0.3.4&auto=compress%2Cformat&w=&fit=clip&s=97a5b185bff333baeba205eade5e9945&w=500&h=250&fit=clip' /></div>
+<div class='logo' style='text-align: center; margin-bottom: 30px; margin-top: 30px;'><img class='logo-image' alt='GetFeedback' style='-ms-interpolation-mode:bicubic;border:0;vertical-align: bottom;' src='https://i.ibb.co/r4x9LDd/Webp-net-resizeimage.png' />
+<h1 style= 'color:#ffffff'> Secret Santa Sender </h1></div>
+
 <table align='center' class='layout' width='600' style='background-color:#ffffff;border-radius:2px;border-spacing:0;color:#222222;margin-right:auto;margin-left:auto;-webkit-font-smoothing:antialiased;font-family:'Open Sans', sans-serif;font-size:11px;font-weight:300;line-height:26px;width:600px'>
 <tr>
 <td class='padded' style='padding: 18px 20px; background-color: #ffffff'>
