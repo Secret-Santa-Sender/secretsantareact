@@ -34,7 +34,7 @@ class Registration extends Component {
       name: this.state.name,
       likes: this.state.likes,
       dislikes: this.state.dislikes,
-      imgUrl: this.state.imgurl,
+      // imgUrl: this.state.imgurl,
       email: this.state.email,
       company: this.props.match.params.id
     })
@@ -69,7 +69,9 @@ class Registration extends Component {
   registrationForm() {
     return (
       <div className="contents">
-        <div className="logo"><img src="/willow.svg"/></div>
+        <div className="logo">
+          <img src="/willow.svg" />
+        </div>
         <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>
@@ -110,7 +112,7 @@ class Registration extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="form-line">
+              {/*} <div className="form-line">
                 <label>Link to your profile photo:</label>
                 <input
                   type="text"
@@ -118,7 +120,7 @@ class Registration extends Component {
                   value={this.state.imgurl}
                   onChange={this.handleChange}
                 />
-              </div>
+              </div>*/}
               <div className="form-line">
                 <label>Your email:</label>
                 <input
@@ -139,7 +141,9 @@ class Registration extends Component {
   postRegistration() {
     return (
       <div className="contents">
-        <div className="logo"><img src="/willow.svg"/></div>
+        <div className="logo">
+          <img src="/willow.svg" />
+        </div>
         <div className="title">
           <h1>Secret Santa Sender!</h1>
         </div>

@@ -28,8 +28,8 @@ class Confirmation extends Component {
         this.setState({
           name: res.data.name,
           likes: res.data.likes,
-          dislikes: res.data.dislikes,
-          imgUrl: res.data.imgUrl
+          dislikes: res.data.dislikes
+          // imgUrl: res.data.imgUrl
         });
       })
       .catch(() => {
@@ -40,12 +40,14 @@ class Confirmation extends Component {
   render() {
     if (this.state.name !== "") {
       return (
-      <div className="contents">
-        <div className="logo"><img src="/willow.svg"/></div>
-        <div className="title">
-          <h1>Secret Santa Sender!</h1>
-        </div>
-        <div className="box">
+        <div className="contents">
+          <div className="logo">
+            <img src="/willow.svg" />
+          </div>
+          <div className="title">
+            <h1>Secret Santa Sender!</h1>
+          </div>
+          <div className="box">
             <div className="registration-message">
               <p>Thanks! You are confirmed for Secret Santa.</p>
               <p>
@@ -57,11 +59,11 @@ class Confirmation extends Component {
               <p>
                 <b>Your dislikes:</b> {this.state.dislikes}
               </p>
-              <p>
+              {/*  <p>
                 <b>Your photo:</b>
               </p>
               <br />
-              <img src={this.state.imgUrl} height="100px" />
+              <img src={this.state.imgUrl} height="100px" />*/}
             </div>
           </div>
         </div>
