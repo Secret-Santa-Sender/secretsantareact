@@ -28,7 +28,7 @@ class Home extends Component {
     this.setState({ page: "form" });
   }
 
-  handleDateChange = enddate => this.setState({enddate})
+  handleDateChange = endDate => this.setState({endDate})
 
   handleSubmit(event) {
     event.preventDefault();
@@ -120,7 +120,7 @@ class Home extends Component {
             <label>Mail Date:</label>
             <div className="input-block">
             <DatePicker 
-                value={this.state.enddate}
+                value={this.state.endDate}
                 onChange={this.handleDateChange}
               />
              <br />
