@@ -134,6 +134,7 @@ class Registration extends Component {
             </form>
           </div>
         </div>
+        <div>Who's in?</div>
       </div>
     );
   }
