@@ -3,7 +3,7 @@ const helpers = require("./helpers.js");
 
 module.exports = {
   create: function(req, res) {
-    console.log(req.body);
+    console.log("successfully created", req.body);
     db.Participant.create(req.body)
       .then(dbParticipant => res.json(dbParticipant))
       .catch(err => res.status(422).json(err));
@@ -23,6 +23,16 @@ module.exports = {
       .then(dbModel => {
         res.json(dbModel);
         console.log(dbModel);
+      })
+
+      .catch(err => res.status(422).json(err));
+  },
+  findAllAtCompany: function(req, res) {
+    db.Participant.find({ company: req.params.id})
+      // .sort({ date: -1 })
+      .then(dbModel => {
+        res.json(dbModel);
+        console.log("SERVER SIDE OUTPUT:"+ dbModel);
       })
 
       .catch(err => res.status(422).json(err));
@@ -58,6 +68,33 @@ module.exports = {
     db.Participant.findOneAndRemove({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  addTeamToParticipant: function(req, res){
+    db.Participant
+    .findOneAndUpdate({ _id: req.params.id }, {$push: {teams: req.body.teamId}}, { new: true })
+    .then(function(dbUser){
+       db.Team.find({_id: {
+        $in: dbUser.teams
+      }}).then(teams => {
+        console.log("teams", teams)
+        newteams = []
+        for(var i=0; i<teams.length; i++){
+          newteams.push(teams[i].teamName)
+        }
+
+//need to use .toObject because Mongoose enforces schema on the returned object
+
+        dbUser2 = dbUser.toObject()
+        dbUser2.teams = newteams
+
+        res.json(dbUser2)
+      })
+      // res.json(dbUser)
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
   },
 
   //add confirmed: true later to the find parameters later

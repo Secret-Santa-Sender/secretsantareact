@@ -25,10 +25,18 @@ var ParticipantSchema = new Schema({
     type: String,
     required: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   company: {
     type: Schema.Types.ObjectId,
     ref: "Admin"
   },
+  teams: [{
+    type: Schema.Types.ObjectId,
+    ref: "Team"
+  }],
   confirmed: {
     type: Boolean,
     required: false,

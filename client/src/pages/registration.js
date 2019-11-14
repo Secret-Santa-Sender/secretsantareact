@@ -2,6 +2,8 @@ import React, { Component } from "react";
 //import { Route } from "react-router-dom";
 import API from "../utils/API";
 import Moment from "react-moment";
+import SingleParticipant from "../components/ParticipantListItem/participantlistitem";
+
 
 class Registration extends Component {
   constructor(props) {
@@ -10,12 +12,12 @@ class Registration extends Component {
       name: "",
       likes: "",
       dislikes: "",
-      imgurl: "",
       email: "",
       company: this.props.match.params.id,
       companyName: "",
       endDate: "",
-      submitted: false
+      submitted: false,
+      whosin: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +36,6 @@ class Registration extends Component {
       name: this.state.name,
       likes: this.state.likes,
       dislikes: this.state.dislikes,
-      // imgUrl: this.state.imgurl,
       email: this.state.email,
       company: this.props.match.params.id
     })
@@ -50,6 +51,20 @@ class Registration extends Component {
 
   componentDidMount() {
     this.fetchCompanyName();
+    this.fetchParticipants();
+  }
+
+  fetchParticipants() {
+    API.findParticipantsAtCompany(this.props.match.params.id)
+    .then(res => {
+      console.log("HERES YOUR PARTICIPANTS", res);
+      this.setState({
+        whosin: res.data
+      })
+    })
+    .catch(() => {
+      console.log("fetch participants failed", this.props.match.params.id)
+    });
   }
 
   fetchCompanyName() {
@@ -112,15 +127,6 @@ class Registration extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {/*} <div className="form-line">
-                <label>Link to your profile photo:</label>
-                <input
-                  type="text"
-                  name="imgurl"
-                  value={this.state.imgurl}
-                  onChange={this.handleChange}
-                />
-              </div>*/}
               <div className="form-line">
                 <label>Your email:</label>
                 <input
@@ -135,6 +141,14 @@ class Registration extends Component {
           </div>
         </div>
         <div>Who's in?</div>
+         <ul>
+          {this.state.whosin.map (participant =>{
+            return(
+              <SingleParticipant item={participant}>
+              </SingleParticipant>
+              )
+          })}
+          </ul> 
       </div>
     );
   }

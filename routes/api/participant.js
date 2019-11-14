@@ -7,12 +7,26 @@ router
 	.get(participantController.findAll)
 	.post(participantController.createAndSendConfirmationEmail);
 
+// Matches with "/api/participant/create"
+router
+	.route("/create")
+	.get(participantController.findAll)
+	.post(participantController.create);
+
 // Matches with "/api/participant/:id"
 router
 	.route("/:id")
 	.get(participantController.findById)
 	.put(participantController.update)
 	.delete(participantController.remove);
+
+// Matches with "/api/participant/addTeamToParticipant/:id"
+
+router.route("/addTeamToParticipant/:id").post(participantController.addTeamToParticipant);	
+
+// Matches with "/api/participant/company/:id"
+
+router.route("/company/:id").get(participantController.findAllAtCompany);	
 
 // Matches with "/api/participant/confirm/:id"
 

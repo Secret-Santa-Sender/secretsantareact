@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import DatePicker from "react-date-picker";
 import moment from "moment";
+import authState from '../utils/authinterface.js'
+
 
 class Home extends Component {
   constructor(props) {
