@@ -77,12 +77,15 @@ class TeamPage extends Component {
       console.log("response from get by email",res)
       if (!res.data){
         alert("no user found")
-        // API.createParticipant({email: user.email, name: user.name})
-        // .then(user => {
-        //   CREATE LINK
-        //   API.sendInviteEmailExisting(user)
-        // })
-        // .catch(console.error)
+        API.createParticipant({email: user.email, name: user.name})
+        .then(res => {
+          user.link = "http://localhost:3000/linksignup/"+res.data._id
+          API.sendInviteEmailNewUser(user)
+          .then(res => {
+            console.log("sendinviteemail existing triggered", res)
+          })
+        })
+        .catch(console.error)
       }
       else{
         console.log("user found")

@@ -49,6 +49,9 @@ export default {
   sendInviteEmailExisting: participant => {
     return axios.post("/api/participant/sendInviteEmailExisting", participant);
   },
+  sendInviteEmailNewUser: participant => {
+    return axios.post("/api/participant/sendInviteEmailNewUser", participant);
+  },
   makeMatches: function(id) {
     return axios.get("/api/participant/matches/" + id);
   },

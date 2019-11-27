@@ -30,12 +30,17 @@ class LinkSignup extends Component {
 
     let user = {
       password: this.state.password,
-      id: props.match.params.id
+      id: this.props.match.params.userID
     }
+    console.log("user before going off and updating", user)
 
 
     //request to server to update a user with new password
-    API.updateParticipant(user.id, user.password)
+    API.updateParticipant(user.id, {password: user.password})
+    .then(res =>{
+      this.setState({redirectTo: true})
+    })
+    .catch(console.error)
 
   }
 
