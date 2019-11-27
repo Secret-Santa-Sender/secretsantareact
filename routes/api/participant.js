@@ -20,13 +20,32 @@ router
 	.put(participantController.update)
 	.delete(participantController.remove);
 
+// Matches with "/api/participant/email/:email"
+router
+	.route("/email/:email")
+	.get(participantController.findByEmail)
+	
+
+// Matches with "/api/participant/sendInviteEmailExisting"
+router.route("/sendInviteEmailExisting")
+	  .post(participantController.sendInviteEmailExisting);
+
+// Matches with "/api/participant/sendInviteEmailNewUser"
+router.route("/sendInviteEmailNewUser")
+	  .post(participantController.sendInviteEmailNewUser);		
+
+
 // Matches with "/api/participant/addTeamToParticipant/:id"
 
 router.route("/addTeamToParticipant/:id").post(participantController.addTeamToParticipant);	
 
 // Matches with "/api/participant/company/:id"
 
-router.route("/company/:id").get(participantController.findAllAtCompany);	
+router.route("/company/:id").get(participantController.findAllAtCompany);
+
+// Matches with "/api/participant/team/:id"
+
+router.route("/team/:id").get(participantController.findAllAtTeam);		
 
 // Matches with "/api/participant/confirm/:id"
 

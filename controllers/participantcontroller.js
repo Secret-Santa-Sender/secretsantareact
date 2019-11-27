@@ -17,6 +17,16 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+  sendInviteEmailExisting: function(req, res) {
+    console.log(req.body);
+    helpers.sendInviteEmailExisting(req.body);
+
+  },
+  sendInviteEmailNewUser: function(req, res) {
+    console.log(req.body);
+    helpers.sendInviteEmailNewUser(req.body);
+
+  },
   findAll: function(req, res) {
     db.Participant.find()
       // .sort({ date: -1 })
@@ -37,9 +47,34 @@ module.exports = {
 
       .catch(err => res.status(422).json(err));
   },
+  findAllAtTeam: function(req, res) {
+    db.Participant.find({ teams: req.params.id})
+      // .sort({ date: -1 })
+      .then(p => {
+        newParticipants = []
+
+        for (var i=0; i<p.length; i++){
+          newParticipants.push(p[i].name)
+        }
+        console.log("new participants", newParticipants)
+        console.log("response from participants", p)
+
+        res.json(newParticipants);
+      })
+
+      .catch(err => res.status(422).json(err));
+  },
 
   findById: function(req, res) {
-    db.Participant.findOne({ _id: req.params.id })
+    db.Participant.findOne({ _id: req.params.id }).populate('teams')
+      .then(dbModel => {
+        res.json(dbModel);
+        // console.log(dbModel)
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  findByEmail: function(req, res) {
+    db.Participant.findOne({ email: req.params.email }).populate('teams')
       .then(dbModel => {
         res.json(dbModel);
         // console.log(dbModel)
@@ -79,7 +114,9 @@ module.exports = {
         console.log("teams", teams)
         newteams = []
         for(var i=0; i<teams.length; i++){
-          newteams.push(teams[i].teamName)
+          newteams.push({
+            id: teams[i]._id,
+            teamName: teams[i].teamName})
         }
 
 //need to use .toObject because Mongoose enforces schema on the returned object

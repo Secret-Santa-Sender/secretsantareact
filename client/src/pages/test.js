@@ -15,11 +15,13 @@ class Test extends Component {
       email: null,
       id: null,
       teamName: null,
-      teams: []
+      teams: [],
+      redirectTo: null
 		}
 
 		this.handleTeamSubmit = this.handleTeamSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)    
+    this.handleChange = this.handleChange.bind(this)
+    this.handleTeamClick = this.handleTeamClick.bind(this)    
 		
 	}
 
@@ -32,7 +34,14 @@ class Test extends Component {
       })
       .then(res => {
         console.log("the user returned from api call", res)
-        this.setState({id: res.data._id});
+
+        let tempTeamArr = []
+
+        for (var i=0; i<res.data.teams.length; i++){
+          tempTeamArr.push(res.data.teams[i])
+        }
+
+        this.setState({id: res.data._id, teams: tempTeamArr});
       })
       .catch(() => {});
   }
@@ -77,8 +86,19 @@ class Test extends Component {
         })
     }
 
+    handleTeamClick(event) {
+
+      this.setState({
+        redirectTo: event.target.id
+      })
+
+    }
+
 render() {
 
+  if (this.state.redirectTo) {
+    return <Redirect to={'/teampage/'+this.state.redirectTo} />
+  }
 
   return(
   <div>
@@ -93,7 +113,7 @@ render() {
            <ul>
           {this.state.teams.map (team =>{
             return(
-              <SingleTeam item={team}>
+              <SingleTeam team={team} handleClick={this.handleTeamClick}> 
               </SingleTeam>
               )
           })}

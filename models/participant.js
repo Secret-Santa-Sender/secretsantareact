@@ -23,11 +23,12 @@ var ParticipantSchema = new Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
-    required: true
+    required: false
   },
   company: {
     type: Schema.Types.ObjectId,

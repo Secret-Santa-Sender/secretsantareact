@@ -2,6 +2,10 @@ const emailer = require("../config/emailer.js");
 const pairEmail = require("./pairemail.js");
 const adminEmail = require("./adminemail.js");
 const confirmationEmail = require("./confirmationemail.js");
+const inviteEmailExisting = require("./inviteemailexisting.js");
+const inviteEmailNewUser = require("./inviteemailnewuser.js");
+
+
 
 function randomNumber(n) {
 	return Math.floor(Math.random() * n);
@@ -74,6 +78,30 @@ module.exports = {
 				pair.to.name,
 				pair.to.likes,
 				pair.to.dislikes
+			)
+		});
+	},
+	sendInviteEmailExisting: function(participant) {
+		emailer.sendMail({
+			to: participant.email,
+			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
+			subject: "You've been invited to join"+ participant.team+"'s SS Team",
+			html: inviteEmailExisting.html(
+				participant.name,
+				participant.link,
+				participant.team
+			)
+		});
+	},
+	sendInviteEmailNewUser: function(participant) {
+		emailer.sendMail({
+			to: participant.email,
+			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
+			subject: "You've been invited to join SS sender and"+ participant.team+"'s SS Team",
+			html: inviteEmailNewUser.html(
+				participant.name,
+				participant.link,
+				participant.team
 			)
 		});
 	},

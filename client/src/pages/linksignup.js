@@ -3,14 +3,12 @@ import API from "../utils/API";
 import { Redirect } from 'react-router-dom'
 
 
-class Signup extends Component {
+class LinkSignup extends Component {
 
   constructor () {
     super()
     this.state = {
-      email: '',
       password: '',
-      name: '',
       redirectTo: false
     }
 
@@ -31,18 +29,14 @@ class Signup extends Component {
     event.preventDefault()
 
     let user = {
-      email: this.state.email,
       password: this.state.password,
-      name: this.state.name
+      id: props.match.params.id
     }
 
 
-    //request to server to add a new username/password
-    API.createParticipant2(user)
-    .then(function(user) {
-      this.setState({redirectTo: true})
-    }.bind(this))
-    .catch(console.error)
+    //request to server to update a user with new password
+    API.updateParticipant(user.id, user.password)
+
   }
 
 render() {
@@ -55,9 +49,6 @@ render() {
   <div>
   <h4>Signup</h4>
   <form>
-    name:<br/>
-    <input type="text" name="name" onChange={this.handleChange}/><br/>
-    email:<br/>
     <input type="text" name="email" onChange={this.handleChange}/><br/>
     password:<br/>
     <input type="text" name="password" onChange={this.handleChange}/>
@@ -68,4 +59,4 @@ render() {
   }
 }
 
-export default Signup;
+export default LinkSignup;

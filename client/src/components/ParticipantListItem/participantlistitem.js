@@ -2,7 +2,7 @@ import React from "react";
 
 
 const SingleParticipant = (props) =>(
-  <li> {props.item.name}</li>
+  <li> {props.item}</li>
 );
 
 export default SingleParticipant;

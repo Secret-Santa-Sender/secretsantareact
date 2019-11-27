@@ -13,8 +13,8 @@ export default {
   createParticipant2: function(participant) {
     return axios.post("/auth/signup", participant);
   },
-  updateParticipant: function(id) {
-    return axios.put("/api/participant/"+ id);
+  updateParticipant: function(id, participant) {
+    return axios.put("/api/participant/"+ id, participant);
   },
   addTeamToParticipant: function(id, team) {
     return axios.post("/api/participant/addTeamToParticipant/"+ id, team);
@@ -34,11 +34,20 @@ export default {
   getUser: function(id) {
     return axios.get("/api/participant/" + id);
   },
+  getParticipantByEmail: function(email) {
+    return axios.get("/api/participant/email/" + email);
+  },
   findParticipantsAtCompany: function(id) {
     return axios.get("/api/participant/company/" + id);
   },
+  findParticipantsAtTeam: function(id) {
+    return axios.get("/api/participant/team/" + id);
+  },
   sendEmail: email => {
     return axios.post("/api/admin/sendemail", email);
+  },
+  sendInviteEmailExisting: participant => {
+    return axios.post("/api/participant/sendInviteEmailExisting", participant);
   },
   makeMatches: function(id) {
     return axios.get("/api/participant/matches/" + id);
