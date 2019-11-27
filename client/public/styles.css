@@ -13,9 +13,9 @@ div.title h1 {
   padding: 0;
 }
 
-div.fixed-footer{
+div.fixed-footer {
   width: 100%;
-  position: fixed;        
+  position: fixed;
   background: #333;
   padding: 30px 0;
   color: #fff;
@@ -26,15 +26,15 @@ div.header-clear {
 }
 
 div.box {
- display: inline-block;
- padding: 40px;
- margin: 40px;
- background: #fff;
+  display: inline-block;
+  padding: 40px;
+  margin: 40px;
+  background: #fff;
 }
 
 div.steps {
- display: inline-block;
- text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 
 div.step {
@@ -59,12 +59,21 @@ div.start-button:hover {
   text-decoration: underline;
 }
 
-form.registration input[type=text] {
+form.registration input[type="text"] {
   font-size: 14pt;
   margin-bottom: 5px;
   border: none;
   border-bottom: 2px solid #ddd;
   width: 300px;
+  vertical-align: bottom;
+}
+
+form.registration input[type="password"] {
+  font-size: 14pt;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  width: 200px;
   vertical-align: bottom;
 }
 
@@ -89,7 +98,7 @@ div.form-container {
   text-align: center;
 }
 
-form.registration input[type=submit] {
+form.registration input[type="submit"] {
   background: #ccc;
   font-size: 14pt;
   margin: 20px;
@@ -97,7 +106,7 @@ form.registration input[type=submit] {
   display: inline-block;
 }
 
-form.registration input[type=submit]:hover {
+form.registration input[type="submit"]:hover {
   text-decoration: underline;
 }
 
@@ -117,7 +126,7 @@ div.displayLink {
 }
 
 div.registration-message {
-  text-align:center;
+  text-align: center;
   font-size: 14pt;
   width: 400px;
   margin: auto;

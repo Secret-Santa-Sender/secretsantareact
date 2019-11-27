@@ -1,70 +1,107 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import API from "../utils/API";
-import { Redirect } from 'react-router-dom'
-
+import { Redirect } from "react-router-dom";
 
 class Signup extends Component {
-
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
-      email: '',
-      password: '',
-      name: '',
+      email: "",
+      password: "",
+      retypePassword: "",
+      name: "",
       redirectTo: false
-    }
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)    
-    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
 
-
-    handleSubmit(event) {
-
-    event.preventDefault()
-
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("Submit", this.state);
     let user = {
       email: this.state.email,
       password: this.state.password,
       name: this.state.name
-    }
-
+    };
 
     //request to server to add a new username/password
     API.createParticipant2(user)
-    .then(function(user) {
-      this.setState({redirectTo: true})
-    }.bind(this))
-    .catch(console.error)
+      .then(
+        function(user) {
+          this.setState({ redirectTo: true });
+          console.log("redirected");
+        }.bind(this)
+      )
+      .catch(console.error);
   }
 
-render() {
+  render() {
+    if (this.state.redirectTo) {
+      return <Redirect to="/login" />;
+    }
 
-  if (this.state.redirectTo) {
-    return <Redirect to='/login' />
-  }
-
-  return(
-  <div>
-  <h4>Signup</h4>
-  <form>
-    name:<br/>
-    <input type="text" name="name" onChange={this.handleChange}/><br/>
-    email:<br/>
-    <input type="text" name="email" onChange={this.handleChange}/><br/>
-    password:<br/>
-    <input type="text" name="password" onChange={this.handleChange}/>
-    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-  </form>
-  </div>
-  );
+    return (
+      <div>
+        <h4>Signup</h4>
+        <div className="box">
+          <div className="form-container">
+            <form className="registration" onSubmit={this.handleSubmit}>
+              <div className="form-line">
+                <label>Name:</label>
+                <div className="input-block">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="E.g. Carlos Santana"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-line">
+                <label>Email:</label>
+                <div className="input-block">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="E.g. carlos.santana@outlook.com"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-line">
+                <label>Password:</label>
+                <div className="input-block">
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-line">
+                <label>Retype Password:</label>
+                <div className="input-block">
+                  <input
+                    type="password"
+                    name="retypePassword"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+            </form>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
