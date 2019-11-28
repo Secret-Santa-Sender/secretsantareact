@@ -78,7 +78,13 @@ class Login extends Component {
                   />
                 </div>
               </div>
-              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+              <div className="submit-container">
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={this.handleSubmit}
+                />
+              </div>
             </form>
           </div>
         </div>

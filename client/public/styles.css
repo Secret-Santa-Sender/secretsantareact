@@ -91,11 +91,11 @@ form.registration label {
 }
 
 div.form-line {
-  margin: 20px;
+  margin: 20px 0;
 }
 
 div.form-container {
-  text-align: center;
+  text-align: left;
 }
 
 form.registration input[type="submit"] {
@@ -113,7 +113,7 @@ form.registration input[type="submit"]:hover {
 form.registration div.input-block {
   display: inline-block;
   text-align: left;
-  width: 550px;
+  width: 400px;
 }
 
 div.registrationLink {
@@ -130,4 +130,24 @@ div.registration-message {
   font-size: 14pt;
   width: 400px;
   margin: auto;
+}
+
+div.submit-container {
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  form.registration div.input-block {
+    display: inline-block;
+    text-align: left;
+    width: auto;
+  }
+  form.registration label {
+    vertical-align: top;
+    font-size: 14pt;
+    padding: 0 20px 0 0;
+    width: auto;
+    display: inline-block;
+    text-align: left;
+  }
 }
