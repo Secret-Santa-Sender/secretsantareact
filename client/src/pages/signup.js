@@ -117,13 +117,15 @@ class Signup extends Component {
                   />
                 </div>
               </div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={this.handleSubmit}
-                disabled={!this.readyToSubmit()}
-              />
-              {errorMsg}
+              <div className="submit-container">
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={this.handleSubmit}
+                  disabled={!this.readyToSubmit()}
+                />
+                {errorMsg}
+              </div>
             </form>
           </div>
         </div>
