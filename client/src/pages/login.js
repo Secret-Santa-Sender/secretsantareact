@@ -1,72 +1,89 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import axios from "axios";
 import API from "../utils/API";
-import { Redirect } from 'react-router-dom'
-import authState from '../utils/authinterface.js'
-
-
+import { Redirect } from "react-router-dom";
+import authState from "../utils/authinterface.js";
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      redirectTo: false
+    };
 
-	constructor () {
-		super()
-		this.state = {
-			email: '',
-			password: '',
-			redirectTo: false
-		}
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-		this.handleChange = this.handleChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)		
-	}
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
-    handleSubmit(event) {
-
-    event.preventDefault()
+  handleSubmit(event) {
+    event.preventDefault();
 
     let user = {
       username: this.state.email,
       password: this.state.password
-    }
-
+    };
 
     //request to server to check username/password
     API.loginParticipant(user)
-    .then(function(res) {
-    	console.log('response from login', res)
-    	if (res.data.user._id) {
-    		authState.loggedIn = true
-    	}
-    	console.log('authstate', authState)
-      this.setState({redirectTo: true})
-    }.bind(this))
-    .catch(console.error)
-    }
-
-render() {
-
-  if (this.state.redirectTo) {
-    return <Redirect to='/test' />
+      .then(
+        function(res) {
+          console.log("response from login", res);
+          if (res.data.user._id) {
+            authState.loggedIn = true;
+          }
+          console.log("authstate", authState);
+          this.setState({ redirectTo: true });
+        }.bind(this)
+      )
+      .catch(console.error);
   }
 
-  return(
-  <div>
-  <h4>Login</h4>
-  <form>
-    email:<br/>
-    <input type="text" name="email" onChange={this.handleChange}/><br/>
-    password:<br/>
-    <input type="text" name="password" onChange={this.handleChange}/>
-    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-  </form>
-  </div>
-  );
+  render() {
+    if (this.state.redirectTo) {
+      return <Redirect to="/test" />;
+    }
+
+    return (
+      <div>
+        <h4>Login</h4>
+        <div className="box">
+          <div className="form-container">
+            <form className="registration" onSubmit={this.handleSubmit}>
+              <div className="form-line">
+                <label>Email:</label>
+                <div className="input-block">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="E.g. carlos.santana@outlook.com"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-line">
+                <label>Password:</label>
+                <div className="input-block">
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+            </form>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
