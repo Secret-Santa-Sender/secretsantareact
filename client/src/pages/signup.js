@@ -43,9 +43,30 @@ class Signup extends Component {
       .catch(console.error);
   }
 
+  readyToSubmit() {
+    return (
+      this.state.email.length > 0 &&
+      this.state.name.length > 0 &&
+      this.state.password.length >= 6 &&
+      this.state.password == this.state.retypePassword
+    );
+  }
+
   render() {
     if (this.state.redirectTo) {
       return <Redirect to="/login" />;
+    }
+
+    let errorMsg = <div></div>;
+
+    if (this.state.password.length > 0 && this.state.password.length < 6) {
+      errorMsg = <div>Password should be least 6 letters.</div>;
+    } else if (
+      this.state.password.length >= 6 &&
+      this.state.retypePassword.length > 0 &&
+      this.state.password != this.state.retypePassword
+    ) {
+      errorMsg = <div>Incorrect Password</div>;
     }
 
     return (
@@ -96,7 +117,13 @@ class Signup extends Component {
                   />
                 </div>
               </div>
-              <input type="submit" value="Submit" onClick={this.handleSubmit} />
+              <input
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+                disabled={!this.readyToSubmit()}
+              />
+              {errorMsg}
             </form>
           </div>
         </div>
