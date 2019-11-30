@@ -59,7 +59,7 @@ div.start-button:hover {
   text-decoration: underline;
 }
 
-form.registration input[type="text"] {
+form input[type="text"] {
   font-size: 14pt;
   margin-bottom: 5px;
   border: none;
@@ -68,7 +68,7 @@ form.registration input[type="text"] {
   vertical-align: bottom;
 }
 
-form.registration input[type="password"] {
+form input[type="password"] {
   font-size: 14pt;
   margin-bottom: 5px;
   border: none;
@@ -77,17 +77,17 @@ form.registration input[type="password"] {
   vertical-align: bottom;
 }
 
-form.registration div.react-date-picker {
+form div.react-date-picker {
   margin-bottom: 5px;
 }
 
-form.registration label {
+form label {
   vertical-align: top;
   font-size: 14pt;
-  padding: 0 20px;
-  width: 150px;
-  display: inline-block;
-  text-align: right;
+  //padding: 0 20px;
+  // width: 150px;
+  // display: inline-block;
+  // text-align: right;
 }
 
 div.form-line {
@@ -98,7 +98,7 @@ div.form-container {
   text-align: left;
 }
 
-form.registration input[type="submit"] {
+form input[type="submit"] {
   background: #ccc;
   font-size: 14pt;
   margin: 20px;
@@ -106,11 +106,11 @@ form.registration input[type="submit"] {
   display: inline-block;
 }
 
-form.registration input[type="submit"]:hover {
+form input[type="submit"]:hover {
   text-decoration: underline;
 }
 
-form.registration div.input-block {
+form div.input-block {
   display: inline-block;
   text-align: left;
   width: 400px;
@@ -133,16 +133,51 @@ div.registration-message {
 }
 
 div.submit-container {
-  text-align: center;
+  text-align: left;
+}
+
+div.team-box,
+div.profile-box {
+  display: inline-block;
+  font-size: 14pt;
+  padding: 40px;
+  margin: 40px;
+  width: 500px;
+  background: #fff;
+  text-align: left;
+  vertical-align: top;
+}
+
+div.team-box h2,
+div.profile-box h2 {
+  margin: 0;
+}
+
+li.team-list-item span {
+  color: #55f;
+}
+
+img.plus-icon {
+  width: 50px;
+  height: 50px;
+}
+
+div.plus-icon-container,
+div.submit-container {
+  text-align: right;
+}
+
+span.team-edit-hover {
+  float: right;
 }
 
 @media screen and (max-width: 800px) {
-  form.registration div.input-block {
+  form div.input-block {
     display: inline-block;
     text-align: left;
     width: auto;
   }
-  form.registration label {
+  form label {
     vertical-align: top;
     font-size: 14pt;
     padding: 0 20px 0 0;
