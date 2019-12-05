@@ -10,9 +10,7 @@ import Test from "./pages/test";
 import TeamPage from "./pages/teampage";
 import AddingToTeam from "./pages/addingtoteam";
 import LinkSignup from "./pages/linksignup";
-import PrivateRoute from './utils/privateroute.js'
-
-
+import PrivateRoute from "./utils/privateroute.js";
 
 import "./App.css";
 
@@ -27,14 +25,15 @@ class App extends Component {
           <Route exact path="/confirmation/:id" component={Confirmation} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/teampage/:id" component={TeamPage} />
-          <Route exact path="/addingtoteam/:userID/:teamID" component={AddingToTeam} />
+          <PrivateRoute exact path="/teampage/:id" component={TeamPage} />
+          <Route
+            exact
+            path="/addingtoteam/:userID/:teamID"
+            component={AddingToTeam}
+          />
           <Route exact path="/linksignup/:userID" component={LinkSignup} />
 
-
           <PrivateRoute exact path="/test" component={Test} />
-
-
         </div>
       </Router>
     );

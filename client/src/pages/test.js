@@ -38,7 +38,6 @@ class Test extends Component {
           tempTeamArr.push(res.data.teams[i]);
         }
 
-        console.log(res.data);
         this.setState({
           id: res.data._id,
           teams: tempTeamArr,
@@ -162,7 +161,6 @@ class Test extends Component {
           </ul>
           {this.createTeam()}
         </div>
-
         <Profile />
       </div>
     );

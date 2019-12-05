@@ -1,66 +1,60 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import API from "../utils/API";
-import { Redirect } from 'react-router-dom'
-
+import { Redirect } from "react-router-dom";
 
 class LinkSignup extends Component {
-
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
-      password: '',
+      password: "",
       redirectTo: false
-    }
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)    
-    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
 
-
-    handleSubmit(event) {
-
-    event.preventDefault()
+  handleSubmit(event) {
+    event.preventDefault();
 
     let user = {
       password: this.state.password,
       id: this.props.match.params.userID
-    }
-    console.log("user before going off and updating", user)
-
+    };
+    console.log("user before going off and updating", user);
 
     //request to server to update a user with new password
-    API.updateParticipant(user.id, {password: user.password})
-    .then(res =>{
-      this.setState({redirectTo: true})
-    })
-    .catch(console.error)
-
+    API.updateParticipant(user.id, { password: user.password })
+      .then(res => {
+        this.setState({ redirectTo: true });
+      })
+      .catch(console.error);
   }
 
-render() {
+  render() {
+    if (this.state.redirectTo) {
+      return <Redirect to="/login" />;
+    }
 
-  if (this.state.redirectTo) {
-    return <Redirect to='/login' />
-  }
-
-  return(
-  <div>
-  <h4>Signup</h4>
-  <form>
-    <input type="text" name="email" onChange={this.handleChange}/><br/>
-    password:<br/>
-    <input type="text" name="password" onChange={this.handleChange}/>
-    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-  </form>
-  </div>
-  );
+    return (
+      <div>
+        <h4>Signup</h4>
+        <form>
+          <input type="text" name="email" onChange={this.handleChange} />
+          <br />
+          password:
+          <br />
+          <input type="text" name="password" onChange={this.handleChange} />
+          <input type="submit" value="Submit" onClick={this.handleSubmit} />
+        </form>
+      </div>
+    );
   }
 }
 

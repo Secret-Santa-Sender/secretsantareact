@@ -88,7 +88,12 @@ class TeamPage extends Component {
         .catch(console.error)
       }
       else{
-        console.log("user found")
+
+        for (let team of res.data.teams){         
+          if (team._id === user.teamID)
+            return alert("user already on this team")
+        }
+
         let link = "http://localhost:3000/addingtoteam/"+res.data._id+"/"+user.teamID
         user.link = link
         API.sendInviteEmailExisting(user)

@@ -9,13 +9,18 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
   <Route
     { ...rest }
-    render={ props => (
-      authState.loggedIn ? (
-        <Component { ...props } />
-      ) : (
-        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-      )
-  )} />
+    render={ props => {
+    	console.log("authState.loggedIn: ", authState.loggedIn)
+    	if (authState.loggedIn === null) {
+    	  return null
+    	} else if (authState.loggedIn) {
+    	  return <Component { ...props } />
+    	} else {
+          return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+        }
+      }
+    }
+   />
 )
 
 // <Route render={Component}>
