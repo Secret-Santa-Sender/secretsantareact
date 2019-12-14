@@ -7,11 +7,14 @@ import authState from "../utils/authinterface.js";
 class Profile extends Component {
 	constructor() {
 		super();
+
 		this.state = {
-			likes: null,
-			dislikes: null,
+			likes: [],
+			dislikes: [],
+			hasProfile: false,
 			editVisible: false
 		};
+
 		this.handleChange = this.handleChange.bind(this);
 		this.handleEditProfileSubmit = this.handleEditProfileSubmit.bind(this);
 		this.handleEditClick = this.handleEditClick.bind(this);
@@ -26,7 +29,7 @@ class Profile extends Component {
 	handleEditProfileSubmit(event) {
 		event.preventDefault();
 
-		API.updateParticipant(this.state.id, {
+		API.updateParticipant(this.props.getProfile().id, {
 			likes: this.state.likes,
 			dislikes: this.state.dislikes
 		})
@@ -36,6 +39,8 @@ class Profile extends Component {
 
 	handleEditClick(event) {
 		this.setState({
+			likes: this.props.getProfile().likes,
+			dislikes: this.props.getProfile().dislikes,
 			editVisible: true
 		});
 	}
@@ -78,6 +83,13 @@ class Profile extends Component {
 	}
 
 	showProfile() {
+		if (!this.state.hasProfile && this.props.getProfile() !== null) {
+			this.setState({
+				likes: this.props.getProfile().likes,
+				dislikes: this.props.getProfile().dislikes,
+				hasProfile: true
+			});
+		}
 		return (
 			<div className="profile-box">
 				<h2>Your Profile</h2>

@@ -11,16 +11,23 @@ class Test extends Component {
       loggedin: null,
       email: null,
       id: null,
+      name: null,
       teamName: null,
       teams: [],
       redirectTo: null,
-      showCreateTeam: false
+      showCreateTeam: false,
+      profile: null
     };
 
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleTeamClick = this.handleTeamClick.bind(this);
     this.handlePlusTeamClick = this.handlePlusTeamClick.bind(this);
+    this.getProfile = this.getProfile.bind(this);
+  }
+
+  getProfile() {
+    return this.state.profile;
   }
 
   fetchUser() {
@@ -41,8 +48,12 @@ class Test extends Component {
         this.setState({
           id: res.data._id,
           teams: tempTeamArr,
-          likes: res.data.likes,
-          dislikes: res.data.dislikes
+          profile: {
+            id: res.data._id,
+            likes: res.data.likes,
+            dislikes: res.data.dislikes
+          },
+          name: res.data.name
         });
       })
       .catch(() => {});
@@ -146,7 +157,7 @@ class Test extends Component {
 
     return (
       <div>
-        <h4>Teams for {this.state.id}</h4>
+        <h4>Teams for {this.state.name}</h4>
         <div className="team-box">
           <h2>Your Teams:</h2>
           <ul>
@@ -161,7 +172,7 @@ class Test extends Component {
           </ul>
           {this.createTeam()}
         </div>
-        <Profile />
+        <Profile getProfile={this.getProfile} />
       </div>
     );
   }
