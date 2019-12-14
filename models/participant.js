@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -34,15 +35,37 @@ var ParticipantSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Admin"
   },
-  teams: [{
-    type: Schema.Types.ObjectId,
-    ref: "Team"
-  }],
+  teams: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Team"
+    }
+  ],
   confirmed: {
     type: Boolean,
     required: false,
     default: false
   }
+});
+
+ParticipantSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
+ParticipantSchema.pre("save", function(next) {
+  var user = this;
+
+  // only hash the password if it has been modified (or is new)
+  if (!user.isModified("password")) return next();
+
+  // hash the password along with our new salt
+  bcrypt.hash(user.password, 10, function(err, hash) {
+    if (err) return next(err);
+
+    // override the cleartext password with the hashed one
+    user.password = hash;
+    next();
+  });
 });
 
 // This creates our model from the above schema, using mongoose's model method
