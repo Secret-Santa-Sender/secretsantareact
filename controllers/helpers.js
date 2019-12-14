@@ -5,8 +5,6 @@ const confirmationEmail = require("./confirmationemail.js");
 const inviteEmailExisting = require("./inviteemailexisting.js");
 const inviteEmailNewUser = require("./inviteemailnewuser.js");
 
-
-
 function randomNumber(n) {
 	return Math.floor(Math.random() * n);
 }
@@ -47,14 +45,41 @@ function makePairsObject(shuffledArray) {
 	return pairs;
 }
 
+//[2,3,0,1]
+//[mom, dad, ro, willow]
+//{
+//	2: 3
+//	3: 0
+//	0: 1
+//	1: 2
+
+//}
+
+//[{
+// from: mom,
+// to: dad
+//   },
+//   {
+//   	from: dad,
+//   	to: ro
+//   },
+//   {
+//   	from: ro,
+//   	to: willow
+//   },
+//   {
+//   	from: willow,
+//   	to: mom
+//   }]
+
 function makeNameArray(pairedIndexes, array) {
 	var pairNamesArray = [];
 
 	for (var i = 0; i < array.length; i++) {
-		pairNamesArray[i] = {
+		pairNamesArray.push({
 			from: array[i],
 			to: array[pairedIndexes[i]]
-		};
+		});
 	}
 
 	return pairNamesArray;
@@ -85,7 +110,8 @@ module.exports = {
 		emailer.sendMail({
 			to: participant.email,
 			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
-			subject: "You've been invited to join"+ participant.team+"'s SS Team",
+			subject:
+				"You've been invited to join" + participant.team + "'s SS Team",
 			html: inviteEmailExisting.html(
 				participant.name,
 				participant.link,
@@ -97,7 +123,10 @@ module.exports = {
 		emailer.sendMail({
 			to: participant.email,
 			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
-			subject: "You've been invited to join SS sender and"+ participant.team+"'s SS Team",
+			subject:
+				"You've been invited to join SS sender and" +
+				participant.team +
+				"'s SS Team",
 			html: inviteEmailNewUser.html(
 				participant.name,
 				participant.link,

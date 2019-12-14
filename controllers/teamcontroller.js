@@ -8,14 +8,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
- findTeamNames: function(req, res) {
-
-    db.Team.find({ _id: {
-    	$in: req.params
-    } })
+  findTeamNames: function(req, res) {
+    db.Team.find({
+      _id: {
+        $in: req.params
+      }
+    })
       .then(dbModel => {
         res.json(dbModel);
-        console.log(dbModel)
+        console.log(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
@@ -28,5 +29,11 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
-
-}
+  update: function(req, res) {
+    db.Team.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
+};

@@ -3,6 +3,15 @@ var mongoose = require("mongoose");
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
+var Pair = new Schema({
+  from: {
+    type: String
+  },
+  to: {
+    type: String
+  }
+});
+
 // Using the Schema constructor, create a new team Schema object
 var TeamSchema = new Schema({
   teamName: {
@@ -21,6 +30,9 @@ var TeamSchema = new Schema({
     type: String,
     // ref: "Participant",
     required: false
+  },
+  pairs: {
+    type: [Pair]
   }
 });
 

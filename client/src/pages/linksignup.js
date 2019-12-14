@@ -7,7 +7,8 @@ class LinkSignup extends Component {
     super();
     this.state = {
       password: "",
-      redirectTo: false
+      redirectTo: false,
+      retypePassword: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,22 +38,68 @@ class LinkSignup extends Component {
       .catch(console.error);
   }
 
+  readyToSubmit() {
+    return (
+      this.state.password.length >= 6 &&
+      this.state.password === this.state.retypePassword
+    );
+  }
+
   render() {
     if (this.state.redirectTo) {
       return <Redirect to="/login" />;
     }
 
+    let errorMsg = <div></div>;
+
+    if (this.state.password.length > 0 && this.state.password.length < 6) {
+      errorMsg = <div>Password should be least 6 letters.</div>;
+    } else if (
+      this.state.password.length >= 6 &&
+      this.state.retypePassword.length > 0 &&
+      this.state.password != this.state.retypePassword
+    ) {
+      errorMsg = <div>Incorrect Password</div>;
+    }
+
     return (
       <div>
         <h4>Signup</h4>
-        <form>
-          <input type="text" name="email" onChange={this.handleChange} />
-          <br />
-          password:
-          <br />
-          <input type="text" name="password" onChange={this.handleChange} />
-          <input type="submit" value="Submit" onClick={this.handleSubmit} />
-        </form>
+        <div className="box">
+          <div className="form-container">
+            <form className="registration" onSubmit={this.handleSubmit}>
+              <div className="form-line">
+                <label>Password:</label>
+                <div className="input-block">
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-line">
+                <label>Retype Password:</label>
+                <div className="input-block">
+                  <input
+                    type="password"
+                    name="retypePassword"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="submit-container">
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={this.handleSubmit}
+                  disabled={!this.readyToSubmit()}
+                />
+                {errorMsg}
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

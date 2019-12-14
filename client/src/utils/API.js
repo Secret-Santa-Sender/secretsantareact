@@ -14,17 +14,17 @@ export default {
     return axios.post("/auth/signup", participant);
   },
   updateParticipant: function(id, participant) {
-    return axios.put("/api/participant/"+ id, participant);
+    return axios.put("/api/participant/" + id, participant);
   },
   addTeamToParticipant: function(id, team) {
-    return axios.post("/api/participant/addTeamToParticipant/"+ id, team);
+    return axios.post("/api/participant/addTeamToParticipant/" + id, team);
   },
   loginParticipant: function(participant) {
     return axios.post("/auth/login", participant);
   },
   checkForSession: function(participant) {
     return axios.get("/auth/checkforsession");
-  },   
+  },
   findAdmin: function(id) {
     return axios.get("/api/admin/" + id);
   },
@@ -58,7 +58,10 @@ export default {
   getCompaniesDueToday: function() {
     return axios.get("/api/admin/companiesdue/today");
   },
-  confirmParticipant: function(id) {
-    return axios.put("/api/participant/confirm/" + id);
+  sendAllEmails: function(id) {
+    return axios.get("/api/participant/sendallemails/" + id);
+  },
+  updateTeam: function(id, team) {
+    return axios.put("/api/team/" + id, team);
   }
 };

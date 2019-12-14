@@ -5,11 +5,12 @@ const teamController = require("../../controllers/teamcontroller.js");
 router
 	.route("/")
 	.post(teamController.create)
-	.get(teamController.findTeamNames)
+	.get(teamController.findTeamNames);
 
 //Matches with "/api/team/:id"
 router
 	.route("/:id")
 	.get(teamController.findById)
+	.put(teamController.update);
 
 module.exports = router;

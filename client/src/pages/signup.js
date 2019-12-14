@@ -9,7 +9,7 @@ class Signup extends Component {
       email: "",
       password: "",
       retypePassword: "",
-      name: "",
+      username: "",
       redirectTo: false
     };
 
@@ -29,7 +29,7 @@ class Signup extends Component {
     let user = {
       email: this.state.email,
       password: this.state.password,
-      name: this.state.name
+      name: this.state.username
     };
 
     //request to server to add a new username/password
@@ -46,7 +46,7 @@ class Signup extends Component {
   readyToSubmit() {
     return (
       this.state.email.length > 0 &&
-      this.state.name.length > 0 &&
+      this.state.username.length > 0 &&
       this.state.password.length >= 6 &&
       this.state.password === this.state.retypePassword
     );
@@ -80,7 +80,7 @@ class Signup extends Component {
                 <div className="input-block">
                   <input
                     type="text"
-                    name="name"
+                    name="username"
                     placeholder="E.g. Carlos Santana"
                     onChange={this.handleChange}
                   />

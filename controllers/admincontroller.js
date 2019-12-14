@@ -82,4 +82,7 @@ module.exports = {
         res.status(422).json(err);
       });
   }
+  // sendAllEmails2: function(req, res) {
+
+  // }
 };
