@@ -147,10 +147,13 @@ class TeamPage extends Component {
     let button = (
       <div>
         <p>
-          {" "}
-          Click below to send your santas! Warning: You can only do this once!{" "}
+          Click below to send your santas! Warning: You can only do this once!
         </p>
-        <button onClick={this.handleSendEmail} />
+        <input
+          type="submit"
+          value="Send Secret Santas"
+          onClick={this.handleSendEmail}
+        />
       </div>
     );
     if (this.state.complete) {
@@ -158,37 +161,39 @@ class TeamPage extends Component {
     }
     return (
       <div>
-        <h2>team {this.state.teamName} </h2>
-
-        <div>
-          <p>
-            <h2>who all is in? </h2>
-            <ul>
-              {this.state.whosin.map(participant => {
-                return (
-                  <SingleParticipant item={participant}></SingleParticipant>
-                );
-              })}
-            </ul>
-          </p>
-        </div>
-        <div>
-          <form>
-            add user to team:
-            <br />
-            name
-            <input type="text" name="userName" onChange={this.handleChange} />
-            <br />
-            email
-            <input type="text" name="email" onChange={this.handleChange} />
-            <br />
-            <input
-              type="submit"
-              value="Submit"
-              onClick={this.handleUserSubmit}
-            />
-          </form>
-          <div>{button}</div>
+        <h2>Team: {this.state.teamName}</h2>
+        <div className="box">
+          <h4>Team Members:</h4>
+          <ul>
+            {this.state.whosin.map(participant => {
+              return <SingleParticipant item={participant}></SingleParticipant>;
+            })}
+          </ul>
+          <h4>Add a new team member:</h4>
+          <div className="form-container">
+            <form>
+              <div className="form-line">
+                <label>Name:</label>
+                <input
+                  type="text"
+                  name="userName"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-line">
+                <label>Email:</label>
+                <input type="text" name="email" onChange={this.handleChange} />
+              </div>
+              <div className="submit-container">
+                <input
+                  type="submit"
+                  value="Add Member"
+                  onClick={this.handleUserSubmit}
+                />
+              </div>
+            </form>
+            <div>{button}</div>
+          </div>
         </div>
       </div>
     );

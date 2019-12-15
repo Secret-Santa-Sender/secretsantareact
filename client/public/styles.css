@@ -3,6 +3,11 @@ body {
   text-align: center;
 }
 
+div.box,
+h4 {
+  text-align: left;
+}
+
 div.logo img {
   height: 300px;
 }
@@ -98,7 +103,7 @@ div.form-container {
   text-align: left;
 }
 
-form input[type="submit"] {
+input[type="submit"] {
   background: #ccc;
   font-size: 14pt;
   margin: 20px;
@@ -106,7 +111,7 @@ form input[type="submit"] {
   display: inline-block;
 }
 
-form input[type="submit"]:hover {
+input[type="submit"]:hover {
   text-decoration: underline;
 }
 
@@ -153,8 +158,13 @@ div.profile-box h2 {
   margin: 0;
 }
 
+ul {
+  text-align: left;
+}
+
 li.team-list-item span {
   color: #55f;
+  text-align: left;
 }
 
 img.plus-icon {

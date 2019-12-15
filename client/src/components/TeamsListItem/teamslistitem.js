@@ -37,7 +37,6 @@ class SingleTeam extends Component {
 			<li
 				className="team-list-item"
 				onClick={this.props.handleClick}
-				id={this.props.team._id}
 				onMouseOver={this.handleMouseOver}
 				onMouseOut={this.handleMouseOut}
 			>

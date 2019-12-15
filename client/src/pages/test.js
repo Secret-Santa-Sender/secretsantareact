@@ -21,9 +21,9 @@ class Test extends Component {
 
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleTeamClick = this.handleTeamClick.bind(this);
     this.handlePlusTeamClick = this.handlePlusTeamClick.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.handleTeamClick = this.handleTeamClick.bind(this);
   }
 
   getProfile() {
@@ -96,9 +96,9 @@ class Test extends Component {
     });
   }
 
-  handleTeamClick(event) {
+  handleTeamClick(team, event) {
     this.setState({
-      redirectTo: event.target.id
+      redirectTo: team.id
     });
   }
 
@@ -165,7 +165,7 @@ class Test extends Component {
               return (
                 <SingleTeam
                   team={team}
-                  handleClick={this.handleTeamClick}
+                  handleClick={event => this.handleTeamClick(team, event)}
                 ></SingleTeam>
               );
             })}

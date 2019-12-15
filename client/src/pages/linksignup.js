@@ -8,11 +8,34 @@ class LinkSignup extends Component {
     this.state = {
       password: "",
       redirectTo: false,
-      retypePassword: ""
+      retypePassword: "",
+      name: "",
+      email: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchUser();
+  }
+
+  fetchUser() {
+    API.checkForSession()
+      .then(res => {
+        console.log("check for session", this.props.match.params.userID);
+        return API.getUser(this.props.match.params.userID);
+      })
+      .then(res => {
+        console.log("the user returned from api call", res);
+
+        this.setState({
+          name: res.data.name,
+          email: res.data.email
+        });
+      })
+      .catch(() => {});
   }
 
   handleChange(event) {
@@ -64,8 +87,11 @@ class LinkSignup extends Component {
 
     return (
       <div>
-        <h4>Signup</h4>
+        <h2>Signup</h2>
         <div className="box">
+          <h4>Welcome {this.state.name}!</h4>
+          We have your email as {this.state.email}.<br />
+          Please add a password for your account:
           <div className="form-container">
             <form className="registration" onSubmit={this.handleSubmit}>
               <div className="form-line">
