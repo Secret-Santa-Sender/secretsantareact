@@ -71,7 +71,7 @@ class Signup extends Component {
 
     return (
       <div>
-        <h4>Signup</h4>
+        <h2>Signup</h2>
         <div className="box">
           <div className="form-container">
             <form className="registration" onSubmit={this.handleSubmit}>

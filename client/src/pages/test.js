@@ -157,7 +157,7 @@ class Test extends Component {
 
     return (
       <div>
-        <h4>Teams for {this.state.name}</h4>
+        <h2>Teams for {this.state.name}</h2>
         <div className="team-box">
           <h2>Your Teams:</h2>
           <ul>
