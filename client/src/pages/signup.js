@@ -69,6 +69,12 @@ class Signup extends Component {
       errorMsg = <div>Incorrect Password</div>;
     }
 
+    let login_link = "http://localhost:3000/login";
+
+    if (process.env.NODE_ENV === "production") {
+      let login_link = "http://www.secretsantasender.com/login";
+    }
+
     return (
       <div>
         <h2>Signup</h2>
@@ -129,8 +135,8 @@ class Signup extends Component {
             </form>
           </div>
           <div>
-            Already have an account?{" "}
-            <a href="http://localhost:3000/login">Login</a> here instead.
+            Already have an account? <a href={login_link}>Login</a> here
+            instead.
           </div>
         </div>
       </div>

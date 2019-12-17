@@ -85,7 +85,6 @@ class TeamPage extends Component {
 
     API.getParticipantByEmail(user.email)
       .then(res => {
-        console.log("response from get by email", res);
         if (!res.data) {
           API.createParticipant({
             email: user.email,
@@ -93,7 +92,13 @@ class TeamPage extends Component {
             teams: user.teamID
           })
             .then(res => {
-              user.link = "http://localhost:3000/linksignup/" + res.data._id;
+              let correct_link =
+                "http://localhost:3000/linksignup/" + res.data._id;
+              if (process.env.NODE_ENV === "production") {
+                correct_link =
+                  "http://www.secretsantasender.com/linksignup/" + res.data._id;
+              }
+              user.link = correct_link;
               API.sendInviteEmailNewUser(user).then(res => {
                 console.log("sendinviteemail existing triggered", res);
               });
@@ -110,6 +115,15 @@ class TeamPage extends Component {
             res.data._id +
             "/" +
             user.teamID;
+
+          if (process.env.NODE_ENV === "production") {
+            link =
+              "http://www.secretsantasender.com/linksignup/" +
+              res.data._id +
+              "/" +
+              user.teamID;
+          }
+
           user.link = link;
           API.sendInviteEmailExisting(user)
             .then(res => {

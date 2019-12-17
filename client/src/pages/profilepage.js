@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import SingleTeam from "../components/TeamsListItem/teamslistitem";
 import Profile from "../components/profile";
 
-class Test extends Component {
+class ProfilePage extends Component {
   constructor() {
     super();
     this.state = {
@@ -178,4 +178,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default ProfilePage;

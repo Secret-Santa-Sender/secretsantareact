@@ -48,7 +48,13 @@ class Login extends Component {
 
   render() {
     if (this.state.redirectTo) {
-      return <Redirect to="/test" />;
+      return <Redirect to="/profilepage" />;
+    }
+
+    let signup_link = "http://localhost:3000/signup";
+
+    if (process.env.NODE_ENV === "production") {
+      let signup_link = "http://www.secretsantasender.com/signup";
     }
 
     return (
@@ -88,8 +94,8 @@ class Login extends Component {
             </form>
           </div>
           <div>
-            Don't have an account?{" "}
-            <a href="http://localhost:3000/signup">Signup</a> here instead.
+            Don't have an account? <a href={signup_link}>Signup</a> here
+            instead.
           </div>
         </div>
       </div>

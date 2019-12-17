@@ -9,15 +9,6 @@ module.exports = {
       .then(dbParticipant => res.json(dbParticipant))
       .catch(err => res.status(422).json(err));
   },
-  createAndSendConfirmationEmail: function(req, res) {
-    console.log(req.body);
-    db.Participant.create(req.body)
-      .then(dbParticipant => {
-        helpers.sendConfirmationEmail(dbParticipant);
-        res.json(dbParticipant);
-      })
-      .catch(err => res.status(422).json(err));
-  },
   sendInviteEmailExisting: function(req, res) {
     console.log(req.body);
     helpers.sendInviteEmailExisting(req.body);
@@ -36,16 +27,6 @@ module.exports = {
 
       .catch(err => res.status(422).json(err));
   },
-  findAllAtCompany: function(req, res) {
-    db.Participant.find({ company: req.params.id })
-      // .sort({ date: -1 })
-      .then(dbModel => {
-        res.json(dbModel);
-        console.log("SERVER SIDE OUTPUT:" + dbModel);
-      })
-
-      .catch(err => res.status(422).json(err));
-  },
   findAllAtTeam: function(req, res) {
     db.Participant.find({ teams: req.params.id })
       // .sort({ date: -1 })
@@ -56,24 +37,6 @@ module.exports = {
 
       .catch(err => res.status(422).json(err));
   },
-  // findAllAtTeam: function(req, res) {
-  //   db.Participant.find({ teams: req.params.id })
-  //     // .sort({ date: -1 })
-  //     .then(p => {
-  //       newParticipants = [];
-
-  //       for (var i = 0; i < p.length; i++) {
-  //         newParticipants.push(p[i].name);
-  //       }
-  //       console.log("new participants", newParticipants);
-  //       console.log("response from participants", p);
-
-  //       res.json(newParticipants);
-  //     })
-
-  //     .catch(err => res.status(422).json(err));
-  // },
-
   findById: function(req, res) {
     db.Participant.findOne({ _id: req.params.id })
       .populate("teams")

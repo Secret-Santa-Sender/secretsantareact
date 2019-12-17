@@ -39,10 +39,6 @@ router
 	.route("/addTeamToParticipant/:id")
 	.post(participantController.addTeamToParticipant);
 
-// Matches with "/api/participant/company/:id"
-
-router.route("/company/:id").get(participantController.findAllAtCompany);
-
 // Matches with "/api/participant/team/:id"
 
 router.route("/team/:id").get(participantController.findAllAtTeam);
