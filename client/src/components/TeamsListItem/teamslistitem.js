@@ -33,14 +33,17 @@ class SingleTeam extends Component {
 	}
 
 	render() {
+		let teamlink = "/teampage/" + this.props.team.id;
 		return (
 			<li
 				className="team-list-item"
-				onClick={this.props.handleClick}
+				//onClick={this.props.handleClick}
 				onMouseOver={this.handleMouseOver}
 				onMouseOut={this.handleMouseOut}
 			>
-				<span>{this.props.team.teamName}</span>
+				<a href={teamlink}>
+					<span>{this.props.team.teamName}</span>
+				</a>
 				{this.showHover()}
 			</li>
 		);
