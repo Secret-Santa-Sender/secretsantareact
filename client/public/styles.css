@@ -3,6 +3,13 @@ body {
   text-align: center;
 }
 
+img#willow {
+  height: 100px;
+  width: 100px;
+  margin: 0 20px;
+  vertical-align: middle;
+}
+
 div.box,
 h4 {
   text-align: left;

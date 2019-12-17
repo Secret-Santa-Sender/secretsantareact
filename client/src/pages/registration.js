@@ -4,7 +4,6 @@ import API from "../utils/API";
 import Moment from "react-moment";
 import SingleParticipant from "../components/ParticipantListItem/participantlistitem";
 
-
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -56,15 +55,15 @@ class Registration extends Component {
 
   fetchParticipants() {
     API.findParticipantsAtCompany(this.props.match.params.id)
-    .then(res => {
-      console.log("HERES YOUR PARTICIPANTS", res);
-      this.setState({
-        whosin: res.data
+      .then(res => {
+        console.log("HERES YOUR PARTICIPANTS", res);
+        this.setState({
+          whosin: res.data
+        });
       })
-    })
-    .catch(() => {
-      console.log("fetch participants failed", this.props.match.params.id)
-    });
+      .catch(() => {
+        console.log("fetch participants failed", this.props.match.params.id);
+      });
   }
 
   fetchCompanyName() {
@@ -141,14 +140,11 @@ class Registration extends Component {
           </div>
         </div>
         <div>Who's in?</div>
-         <ul>
-          {this.state.whosin.map (participant =>{
-            return(
-              <SingleParticipant item={participant}>
-              </SingleParticipant>
-              )
+        <ul>
+          {this.state.whosin.map(participant => {
+            return <SingleParticipant item={participant}></SingleParticipant>;
           })}
-          </ul> 
+        </ul>
       </div>
     );
   }

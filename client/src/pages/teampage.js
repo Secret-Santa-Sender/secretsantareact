@@ -174,7 +174,10 @@ class TeamPage extends Component {
     }
     return (
       <div>
-        <h2>Team: {this.state.teamName}</h2>
+        <h2>
+          <img id="willow" src="/willow.svg" />
+          Team: {this.state.teamName}
+        </h2>
         <div className="box">
           <h4>Team Members:</h4>
           <ul>

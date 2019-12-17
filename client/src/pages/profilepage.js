@@ -157,7 +157,10 @@ class ProfilePage extends Component {
 
     return (
       <div>
-        <h2>Teams for {this.state.name}</h2>
+        <h2>
+          <img id="willow" src="willow.svg" />
+          Teams for {this.state.name}
+        </h2>
         <div className="team-box">
           <h2>Your Teams:</h2>
           <ul>

@@ -83,7 +83,10 @@ class LinkSignup extends Component {
 
     return (
       <div>
-        <h2>Signup</h2>
+        <h2>
+          <img id="willow" src="willow.svg" />
+          Signup
+        </h2>
         <div className="box">
           <h4>Welcome {this.state.name}!</h4>
           We have your email as {this.state.email}.<br />

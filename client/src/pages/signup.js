@@ -77,7 +77,10 @@ class Signup extends Component {
 
     return (
       <div>
-        <h2>Signup</h2>
+        <h2>
+          <img id="willow" src="willow.svg" />
+          Signup
+        </h2>
         <div className="box">
           <div className="form-container">
             <form className="registration" onSubmit={this.handleSubmit}>
