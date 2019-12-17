@@ -72,7 +72,7 @@ class Signup extends Component {
     let login_link = "http://localhost:3000/login";
 
     if (process.env.NODE_ENV === "production") {
-      let login_link = "http://www.secretsantasender.com/login";
+      login_link = "http://www.secretsantasender.com/login";
     }
 
     return (
