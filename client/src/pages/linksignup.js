@@ -84,7 +84,7 @@ class LinkSignup extends Component {
     return (
       <div>
         <h2>
-          <img id="willow" src="willow.svg" />
+          <img id="willow" src="/willow.svg" />
           Signup
         </h2>
         <div className="box">
