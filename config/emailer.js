@@ -6,7 +6,9 @@ const transporter = nodemailer.createTransport({
 	secure: true, // use SSL
 	auth: {
 		user: "secretsantasenderemail@gmail.com",
-		pass: "199xX!!s0ala"
+		pass: "PasswordWOW"
+		//PasswordWOW
+		//199xX!!s0ala
 	}
 });
 
