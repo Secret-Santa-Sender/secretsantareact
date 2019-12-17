@@ -52,7 +52,7 @@ class Login extends Component {
     }
 
     let signup_link = "http://localhost:3000/signup";
-
+    console.log("process.env", process.env.NODE_ENV);
     if (process.env.NODE_ENV === "production") {
       let signup_link = "http://www.secretsantasender.com/signup";
     }
