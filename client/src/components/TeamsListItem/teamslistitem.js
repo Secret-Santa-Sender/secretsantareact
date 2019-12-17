@@ -33,7 +33,9 @@ class SingleTeam extends Component {
 	}
 
 	render() {
-		let teamlink = "/teampage/" + this.props.team._id;
+		let teamlink =
+			"/teampage/" +
+			(this.props.team._id ? this.props.team._id : this.props.team.id);
 		return (
 			<li
 				className="team-list-item"

@@ -82,6 +82,7 @@ class ProfilePage extends Component {
         return API.addTeamToParticipant(userId, team);
       })
       .then(res => {
+        console.log("another response", res);
         this.setState({
           teams: res.data.teams,
           showCreateTeam: false
