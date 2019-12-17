@@ -53,7 +53,7 @@ class Login extends Component {
 
     return (
       <div>
-        <h4>Login</h4>
+        <h2>Login</h2>
         <div className="box">
           <div className="form-container">
             <form className="registration" onSubmit={this.handleSubmit}>
@@ -86,6 +86,10 @@ class Login extends Component {
                 />
               </div>
             </form>
+          </div>
+          <div>
+            Don't have an account?{" "}
+            <a href="http://localhost:3000/signup">Signup</a> here instead.
           </div>
         </div>
       </div>

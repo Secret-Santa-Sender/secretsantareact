@@ -1,5 +1,6 @@
 const db = require("../models/index");
 const helpers = require("./helpers.js");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   create: function(req, res) {
@@ -92,6 +93,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    if (req.body.password) {
+      let hash = bcrypt.hashSync(req.body.password, 10);
+      req.body.password = hash;
+    }
+
     db.Participant.findOneAndUpdate({ _id: req.params.id }, req.body, {
       new: true
     })
@@ -154,12 +160,14 @@ module.exports = {
       teams: req.params.id
     })
       .then(participants => {
-        // console.log("Participants for company.");
-        console.log(participants);
+        console.log(
+          "here's the participants response from send all emails:",
+          participants
+        );
         var pairs = helpers.getPairs(participants);
-        // for (var j = 0; j < pairs.length; j++) {
-        //   helpers.sendPairEmail(pairs[j]);
-        // }
+        for (var j = 0; j < pairs.length; j++) {
+          helpers.sendPairEmail(pairs[j]);
+        }
         res.json(pairs);
       })
       .catch(function(err) {

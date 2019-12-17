@@ -54,7 +54,8 @@ ParticipantSchema.methods.validPassword = function(password) {
 
 ParticipantSchema.pre("save", function(next) {
   var user = this;
-
+  console.log("modified?");
+  console.log(user.isModified());
   // only hash the password if it has been modified (or is new)
   if (!user.isModified("password")) return next();
 

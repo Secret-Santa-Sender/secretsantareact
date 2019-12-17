@@ -22,11 +22,7 @@ class LinkSignup extends Component {
   }
 
   fetchUser() {
-    API.checkForSession()
-      .then(res => {
-        console.log("check for session", this.props.match.params.userID);
-        return API.getUser(this.props.match.params.userID);
-      })
+    API.getUser(this.props.match.params.userID)
       .then(res => {
         console.log("the user returned from api call", res);
 
@@ -35,7 +31,7 @@ class LinkSignup extends Component {
           email: res.data.email
         });
       })
-      .catch(() => {});
+      .catch(console.error);
   }
 
   handleChange(event) {

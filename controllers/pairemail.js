@@ -95,7 +95,7 @@ a:focus{text-decoration:underline !important}
 .rating a:hover{text-decoration:none !important}
 .rating a:focus{text-decoration:none !important}</style></head>
 <body style='margin:0;box-sizing:border-box;height:100%'>
-<div style='background-color:#C0392B;'>
+<div style='background-color:#afc7be;'>
 
 <table border='0' cellpadding='0' cellspacing='0' height='100%' width='100%'>
 <tr>

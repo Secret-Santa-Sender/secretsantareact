@@ -124,7 +124,7 @@ module.exports = {
 			to: participant.email,
 			from: '"Secret Sanda Sender 🎅" <secretsantasenderemail@gmail.com>',
 			subject:
-				"You've been invited to join SS sender and" +
+				"You've been invited to join SS sender and " +
 				participant.team +
 				"'s SS Team",
 			html: inviteEmailNewUser.html(

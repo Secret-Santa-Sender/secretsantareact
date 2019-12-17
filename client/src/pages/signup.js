@@ -128,6 +128,10 @@ class Signup extends Component {
               </div>
             </form>
           </div>
+          <div>
+            Already have an account?{" "}
+            <a href="http://localhost:3000/login">Login</a> here instead.
+          </div>
         </div>
       </div>
     );

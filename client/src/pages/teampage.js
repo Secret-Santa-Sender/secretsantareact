@@ -87,7 +87,6 @@ class TeamPage extends Component {
       .then(res => {
         console.log("response from get by email", res);
         if (!res.data) {
-          alert("no user found");
           API.createParticipant({
             email: user.email,
             name: user.name,

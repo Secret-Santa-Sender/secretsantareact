@@ -95,7 +95,7 @@ a:focus{text-decoration:underline !important}
 .rating a:hover{text-decoration:none !important}
 .rating a:focus{text-decoration:none !important}</style></head>
 <body style='margin:0;box-sizing:border-box;height:100%'>
-<div style='background-color:#C0392B;'>
+<div style='background-color:#afc7be;'>
 
 <table border='0' cellpadding='0' cellspacing='0' height='100%' width='100%'>
 <tr>
@@ -111,11 +111,13 @@ a:focus{text-decoration:underline !important}
 <td class='padded' style='padding: 18px 20px; background-color: #ffffff'>
 <h1 style='color:#222222;font-family:'Open Sans', sans-serif;font-size:18px;font-weight:bold;line-height:26px;margin:14px 0 14px 0;'>Hi ` +
       name +
-      `, Please click the link below to join SS Sender &  `+team +`'s Secret Santa!</h1>
+      `, Please click the link below to join Secret Santa Sender &  ` +
+      team +
+      `'s Secret Santa!</h1>
 <center class='button' lang='x-button' xml:lang='x-button'>
 <a href=` +
       link +
-      ` style='color:#3EA23D;background-color:#3EA23D;border-color:#3EA23D;border-radius:2px;border-style:solid;color:#FFFFFF;font-size:16px;font-weight:bold;text-align:center;text-decoration:none;box-shadow:0px 1px 3px rgba(0,0,0,0.2);border-width:9px 20px;display:inline-block;margin-bottom:14px'>Confirm Email</a>
+      ` style='color:#3EA23D;background-color:#3EA23D;border-color:#3EA23D;border-radius:2px;border-style:solid;color:#FFFFFF;font-size:16px;font-weight:bold;text-align:center;text-decoration:none;box-shadow:0px 1px 3px rgba(0,0,0,0.2);border-width:9px 20px;display:inline-block;margin-bottom:14px'>Join Us!</a>
 </center>
 </td>
 </tr>
